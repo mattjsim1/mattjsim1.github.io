@@ -1,26 +1,80 @@
-<!-- Home Page -->
 <!DOCTYPE html>
-<html>
-    <!-- Tells you what the tab will say -->
-    <head align="center">
-        <title>Matthew Simone - Computer Science - GVSU</title> 
-    </head>
-    <body>
-        <h1 align="center">Matthew Simone - Computer Science - GVSU</h1>
-        <p>Hello world! This page is a work in progress.</p>
-        
-        <!-- Links -->
-        <div>
-        <a href="about:blank">Resume</a>
-            <br>
-        <a href="https://www.linkedin.com/in/mattsimone/">LinkedIn</a>
-            <br>
-        <a href="https://github.com/mattjsim1">GitHub</a>
-            <br>
-        </div>
-        <br>
-        <img src="Peter.jpg" alt="Peter" align="center" width="25%" height="25%">
-        <br>
-        <img src="Goose.jpg" alt="Peter" align="center" width="25%" height="25%">
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matt Simone | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Matt Simone</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm Matt Simone</h1>
+      <p>Building modern, clean web experiences.</p>
+      <a href="#projects" class="btn">See My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>About Me</h2>
+    <p>
+      I'm a developer who loves building visually appealing, functional websites. 
+      I focus on clean code, thoughtful design, and modern web technologies.
+    </p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>Brief description of your first project.</p>
+        <a href="#" class="btn-small">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Brief description of your second project.</p>
+        <a href="#" class="btn-small">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Three</h3>
+        <p>Brief description of your third project.</p>
+        <a href="#" class="btn-small">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2>Contact</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p id="form-message"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Matt Simone. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
