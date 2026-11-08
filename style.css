@@ -244,6 +244,11 @@ html { scroll-behavior: smooth; }
   border-radius: 999px;
   margin-bottom: 0.5rem;
 }
+.status-prototype { 
+  border-color: #3fb950; 
+  color: #3fb950; 
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
