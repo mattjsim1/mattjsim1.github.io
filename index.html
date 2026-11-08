@@ -17,12 +17,30 @@
   <!-- <meta property="og:image" content="https://www.mjsimone.com/og-image.png"> -->
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='%234a90e2'>MS</text></svg>">
+  <title>Matt Simone | Backend &amp; DevOps</title>
+  <meta name="description" content="Matt Simone — Computer Science student at GVSU and IT field service technician building backend and DevOps systems with Python, FastAPI, Docker, PostgreSQL, and Prometheus/Grafana.">
+  <meta name="author" content="Matt Simone">
+  <link rel="canonical" href="https://www.mjsimone.com/">
+  <meta name="theme-color" content="#111111">
+
+  <!-- Link preview card (LinkedIn, Slack, iMessage). Add og:image once you have a 1200x630 screenshot or banner. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.mjsimone.com/">
+  <meta property="og:title" content="Matt Simone | Backend &amp; DevOps">
+  <meta property="og:description" content="CS @ GVSU. I keep retail infrastructure running across 8 Lowe's sites and build backend systems on the side.">
+  <!-- <meta property="og:image" content="https://www.mjsimone.com/og-image.png"> -->
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23111'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='%234a90e2'>MS</text></svg>">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
+    <nav class="navbar" aria-label="Primary">
+      <a class="logo" href="#hero">Matt Simone</a>
     <nav class="navbar" aria-label="Primary">
       <a class="logo" href="#hero">Matt Simone</a>
       <ul class="nav-links">
@@ -64,8 +82,50 @@
         Technician with CompuCom, supporting 8 Lowe's locations across West Michigan. Each site runs
         around 60 endpoints and 8 servers, and I handle everything from retail POS systems and
         printer hardware to network troubleshooting on enterprise incident tickets.
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <h1>Hi, I'm Matt Simone.</h1>
+        <p class="hero-tagline">
+          Backend &amp; DevOps-focused Computer Science student at GVSU ('28).
+        </p>
+        <p>
+          By day, I keep retail infrastructure running across 8 Lowe's locations.
+          The rest of the time, I build the systems behind it: APIs, data pipelines, and observability.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn">See My Work</a>
+          <a href="https://github.com/mattjsim1" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+          <!-- TODO: replace with your LinkedIn profile URL -->
+          <a href="https://www.linkedin.com/in/mattsimone" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+          <!-- TODO: upload resume.pdf next to index.html -->
+          <a href="resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p>
+        I'm a Computer Science student at Grand Valley State University and an IT Field Service
+        Technician with CompuCom, supporting 8 Lowe's locations across West Michigan. Each site runs
+        around 60 endpoints and 8 servers, and I handle everything from retail POS systems and
+        printer hardware to network troubleshooting on enterprise incident tickets.
       </p>
       <p>
+        Before that, I was an IT intern at the Grand Rapids Housing Commission, where I deployed custom
+        desktop images, configured client and site-to-site VPNs, supported Windows and Linux machines,
+        and wrote technical documentation.
+      </p>
+      <p>
+        Fixing production systems every day is what made me want to build them. I'm focused on backend
+        and DevOps engineering: Python, FastAPI, Docker, PostgreSQL, Redis, and monitoring with
+        Prometheus and Grafana. Outside of code, I rebuild motorcycle engines and restore vintage
+        computers and watches. Same instinct, different hardware.
+      </p>
+    </section>
         Before that, I was an IT intern at the Grand Rapids Housing Commission, where I deployed custom
         desktop images, configured client and site-to-site VPNs, supported Windows and Linux machines,
         and wrote technical documentation.
@@ -143,8 +203,22 @@
       </ul>
     </section>
   </main>
+    <!-- Contact: plain links instead of a form that didn't send anywhere -->
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p>
+        I'm looking for backend and DevOps experience in West Michigan or remote. The fastest way to reach me is email.
+      </p>
+      <ul class="contact-links">
+        <li><a href="mailto:mattjsim1@gmail.com" class="btn">Email Me</a></li>
+        <li><a href="https://www.linkedin.com/in/mattsimone" class="btn btn-outline" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/mattjsim1" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
 
   <footer>
+    <p>&copy; 2026 Matt Simone</p>
     <p>&copy; 2026 Matt Simone</p>
   </footer>
 </body>
