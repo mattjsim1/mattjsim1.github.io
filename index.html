@@ -92,12 +92,13 @@
           <span class="status">In progress</span>
           <h3>Automated Telemetry Stack</h3>
           <p>
-            A high-concurrency telemetry and inventory ingestion service. FastAPI writes to PostgreSQL
-            with Redis caching, and Prometheus and Grafana track throughput and latency. Fully
-            containerized with Docker Compose.
+            A telemetry and inventory ingestion stack built to run itself. FastAPI writes to
+            PostgreSQL with Redis caching. Monitoring is defined as code, so Prometheus and Grafana
+            come up preconfigured with Docker Compose. In progress: Alertmanager alerts and container
+            health checks so failures get flagged and recovered from automatically.
           </p>
           <ul class="tags" aria-label="Tech stack">
-            <li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>Redis</li><li>Prometheus</li><li>Grafana</li><li>Docker</li>
+            <li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>Redis</li><li>Prometheus</li><li>Grafana</li><li>Alertmanager</li><li>Docker</li>
           </ul>
           <a href="https://github.com/mattjsim1" class="btn-small" target="_blank" rel="noopener">View on GitHub</a>
         </article>
