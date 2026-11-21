@@ -92,7 +92,8 @@
           <span class="status">In progress</span>
           <h3>Automated Telemetry Stack</h3>
           <p>
-            A telemetry and inventory ingestion stack built to run itself. FastAPI writes to
+            A monitoring stack deployed across edge nodes and built to run itself. FastAPI ingests
+            node telemetry into
             PostgreSQL with Redis caching. Monitoring is defined as code, so Prometheus and Grafana
             come up preconfigured with Docker Compose. In progress: Alertmanager alerts and container
             health checks so failures get flagged and recovered from automatically.
