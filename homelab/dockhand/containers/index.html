@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" /><script>
+(function () {
+  var path = window.location.pathname;
+  var idx = path.indexOf('/dockhand');
+  var base = idx !== -1 ? path.slice(0, idx + '/dockhand'.length) + '/' : '/homelab/dockhand/';
+  var baseNoSlash = base.slice(0, -1);
+  window.__DOCKHAND_BASE__ = base;
+  window.__DOCKHAND_BASE_NO_SLASH__ = baseNoSlash;
+
+  var baseEl = document.createElement('base');
+  baseEl.href = base;
+  document.head.insertBefore(baseEl, document.head.firstChild);
+
+  try {
+    if (!localStorage.getItem('dockhand:environment')) {
+      localStorage.setItem('dockhand:environment', JSON.stringify({ id: 1, name: 'basement-server', highlightChanges: true }));
+    }
+    if (!localStorage.getItem('dockhand-theme')) {
+      localStorage.setItem('dockhand-theme', JSON.stringify({
+        lightTheme: 'default', darkTheme: 'default', font: 'system', fontSize: 'normal',
+        gridFontSize: 'normal', terminalFont: 'system-mono', editorFont: 'system-mono',
+        animateIcons: true, coloredActionButtons: false, actionIconSize: 'normal',
+        editorIndentGuides: false, editorTheme: 'default'
+      }));
+    }
+  } catch (e) {}
+
+  var liveUrl = 'https://homelab-telemetry.mattman0396.workers.dev/api/dockhand';
+  var snapUrl = window.location.origin + base + '../data/dockhand.json';
+  var snapPromise = null;
+  var origFetch = window.fetch.bind(window);
+  function fetchLiveWithTimeout(url, ms) {
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, ms) : null;
+    var opts = controller ? { signal: controller.signal } : {};
+    return origFetch(url, opts).finally(function () {
+      if (timer !== null) clearTimeout(timer);
+    });
+  }
+  function loadSnap() {
+    if (!snapPromise) {
+      snapPromise = fetchLiveWithTimeout(liveUrl, 3500)
+        .then(function (r) {
+          if (!r.ok) throw new Error('Live HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          if (!data || typeof data !== 'object' || !data.routes) {
+            throw new Error('Invalid live payload');
+          }
+          return data;
+        })
+        .catch(function () {
+          return origFetch(snapUrl).then(function (r) {
+            if (!r.ok) throw new Error('Snapshot HTTP ' + r.status);
+            return r.json();
+          });
+        })
+        .then(function (s) {
+          try {
+            if (s && s.sampledAt) {
+              window.__DOCKHAND_SNAP_TIME__ = new Date(s.sampledAt).toLocaleString('en-US', {
+                month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'
+              });
+              if (typeof hideUnwantedControls === 'function') hideUnwantedControls();
+            }
+          } catch (e) {}
+          return s;
+        });
+    }
+    return snapPromise;
+  }
+
+  function resolveApi(urlStr) {
+    var u;
+    try {
+      u = new URL(urlStr, window.location.origin);
+    } catch (e) {
+      return null;
+    }
+    if (u.pathname.indexOf('/api/') !== 0) return null;
+    return u;
+  }
+
+  var layoutDataPayload = {
+    type: 'data',
+    nodes: [
+      {
+        type: 'data',
+        data: [
+          { authEnabled: 1, user: 2, disableWhatsNew: 3, backupsEnabled: 1, allowSecretlessWebhook: 1 },
+          false,
+          null,
+          true
+        ],
+        uses: {}
+      },
+      null
+    ]
+  };
+
+  function resolveUrl(urlStr) {
+    try { return new URL(urlStr, window.location.origin); } catch (e) { return null; }
+  }
+
+  window.fetch = function (input, init) {
+    var urlStr = typeof input === 'string' ? input : (input && input.url) || '';
+    var parsed = resolveUrl(urlStr);
+    if (parsed && parsed.pathname.endsWith('/__data.json')) {
+      return Promise.resolve(new Response(JSON.stringify(layoutDataPayload), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      }));
+    }
+    var u = resolveApi(urlStr);
+    if (!u) return origFetch(input, init);
+    var method = (init && init.method) || (typeof input !== 'string' && input && input.method) || 'GET';
+    if (method.toUpperCase() !== 'GET') {
+      return Promise.resolve(new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      }));
+    }
+    return loadSnap().then(function (snap) {
+      if (u.pathname === '/api/dashboard/stats/stream') {
+        return new Response(snap.statsStreamRaw || '', {
+          status: 200,
+          headers: { 'Content-Type': 'text/event-stream' }
+        });
+      }
+      if (u.pathname === '/api/containers/stats/stream') {
+        var list = (snap.routes && snap.routes['/api/containers']) || [];
+        var statsMap = snap.containerStats || {};
+        var lines = [];
+        list.forEach(function (c) {
+          var st = statsMap[c.id] || statsMap[c.id && c.id.slice(0, 12)];
+          if (st) {
+            var payload = Object.assign({ id: c.id }, st);
+            lines.push('event: stat\ndata: ' + JSON.stringify(payload) + '\n');
+          }
+        });
+        return new Response(lines.join('\n') + '\n', {
+          status: 200,
+          headers: { 'Content-Type': 'text/event-stream' }
+        });
+      }
+      var mContainer = u.pathname.match(/^\/api\/containers\/([^/]+)(?:\/([^/]+))?$/);
+      if (mContainer && mContainer[1] !== 'pending-updates' && mContainer[1] !== 'sizes' && mContainer[1] !== 'stats' && mContainer[1] !== 'check-updates') {
+        var cid = decodeURIComponent(mContainer[1]);
+        var sub = mContainer[2] || '';
+        if (sub === 'inspect' || sub === '') {
+          var insp = (snap.containerInspect && snap.containerInspect[cid]) || null;
+          if (!insp && Array.isArray(snap.routes && snap.routes['/api/containers'])) {
+            insp = snap.routes['/api/containers'].find(function (c) { return c.id === cid || c.id.indexOf(cid) === 0 || c.name === cid; }) || {};
+          }
+          return new Response(JSON.stringify(insp || {}), { status: 200, headers: { 'Content-Type': 'application/json' } });
+        }
+        if (sub === 'stats') {
+          var st = (snap.containerStats && snap.containerStats[cid]) || {
+            cpuPercent: 0, memoryUsage: 0, memoryRaw: 0, memoryCache: 0, memoryLimit: 0,
+            memoryPercent: 0, networkRx: 0, networkTx: 0, blockRead: 0, blockWrite: 0, timestamp: Date.now()
+          };
+          return new Response(JSON.stringify(st), { status: 200, headers: { 'Content-Type': 'application/json' } });
+        }
+        if (sub === 'logs') {
+          return new Response(JSON.stringify({ logs: 'Read-only portfolio snapshot — live container logs are disabled.' }), {
+            status: 200, headers: { 'Content-Type': 'application/json' }
+          });
+        }
+        if (sub === 'top') {
+          return new Response(JSON.stringify({ Titles: [], Processes: [] }), {
+            status: 200, headers: { 'Content-Type': 'application/json' }
+          });
+        }
+        if (sub === 'shells') {
+          return new Response(JSON.stringify({ shells: ['/bin/sh'] }), {
+            status: 200, headers: { 'Content-Type': 'application/json' }
+          });
+        }
+        if (sub === 'compose' || sub === 'version-notes') {
+          return new Response(JSON.stringify({}), { status: 200, headers: { 'Content-Type': 'application/json' } });
+        }
+      }
+
+      var routes = snap.routes || {};
+      var keyWithSearch = u.pathname + u.search;
+      var body = (keyWithSearch in routes)
+        ? routes[keyWithSearch]
+        : (u.pathname in routes ? routes[u.pathname] : (u.pathname.endsWith('s') ? [] : {}));
+      return new Response(JSON.stringify(body), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    });
+  };
+
+  var OrigEventSource = window.EventSource;
+  function MockEventSource(url) {
+    this.url = url;
+    this.readyState = 1;
+    this.withCredentials = false;
+    this._listeners = {};
+    this.onopen = null;
+    this.onmessage = null;
+    this.onerror = null;
+    var self = this;
+    setTimeout(function () {
+      var openEv = new Event('open');
+      if (typeof self.onopen === 'function') self.onopen(openEv);
+      self._dispatch('open', openEv);
+      var connEv = new MessageEvent('connected', {
+        data: JSON.stringify({ envId: 1, connected: true })
+      });
+      self._dispatch('connected', connEv);
+    }, 20);
+  }
+  MockEventSource.CONNECTING = 0;
+  MockEventSource.OPEN = 1;
+  MockEventSource.CLOSED = 2;
+  MockEventSource.prototype.addEventListener = function (type, fn) {
+    if (!this._listeners[type]) this._listeners[type] = [];
+    this._listeners[type].push(fn);
+  };
+  MockEventSource.prototype.removeEventListener = function (type, fn) {
+    if (!this._listeners[type]) return;
+    this._listeners[type] = this._listeners[type].filter(function (f) { return f !== fn; });
+  };
+  MockEventSource.prototype._dispatch = function (type, ev) {
+    (this._listeners[type] || []).forEach(function (fn) {
+      try { fn.call(this, ev); } catch (e) {}
+    }, this);
+  };
+  MockEventSource.prototype.close = function () {
+    this.readyState = 2;
+  };
+  window.EventSource = function (url, opts) {
+    var u = resolveApi(url);
+    if (u) return new MockEventSource(url);
+    return new OrigEventSource(url, opts);
+  };
+  window.EventSource.CONNECTING = 0;
+  window.EventSource.OPEN = 1;
+  window.EventSource.CLOSED = 2;
+
+  function isAllowedRoute(href) {
+    if (!href) return true;
+    if (href.indexOf('/homelab/') === 0 && href.indexOf(baseNoSlash) !== 0) return true;
+    var rel = href.indexOf(baseNoSlash) === 0 ? href.slice(baseNoSlash.length) : href;
+    if (rel === '' || rel === '/' || rel === '/?home' || rel.indexOf('/?') === 0) return true;
+    if (rel === '/containers' || rel.indexOf('/containers/') === 0 || rel.indexOf('/containers?') === 0) return true;
+    return false;
+  }
+  function rewriteAnchor(a) {
+    if (!a || a.tagName !== 'A') return;
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) !== '/' || href.indexOf('//') === 0) return;
+    if (href.indexOf(baseNoSlash) === 0 || href.indexOf('/homelab/') === 0) return;
+    a.setAttribute('href', href === '/' ? base : baseNoSlash + href);
+  }
+  var HIDE_OUTSIDE_TEXT = { 'Create': 1, 'Prune': 1, 'Refresh': 1, 'All tags': 1, 'Check for updates': 1 };
+  var HIDE_DIALOG_TABS = { 'Logs': 1, 'Terminal': 1, 'Files': 1, 'Processes': 1, 'Compose': 1 };
+  function hideUnwantedControls() {
+    document.querySelectorAll('button').forEach(function (btn) {
+      var txt = (btn.textContent || '').trim();
+      if (txt.indexOf('Search...') !== -1 || txt.indexOf('Toggle theme') !== -1) {
+        btn.setAttribute('data-dh-hide', '1');
+      } else if (!btn.closest('[role="dialog"]') && HIDE_OUTSIDE_TEXT[txt]) {
+        btn.setAttribute('data-dh-hide', '1');
+      }
+    });
+    document.querySelectorAll('[role="dialog"] [role="tab"]').forEach(function (tab) {
+      var txt = (tab.textContent || '').trim();
+      if (HIDE_DIALOG_TABS[txt]) {
+        tab.setAttribute('data-dh-hide', '1');
+      }
+    });
+    var header = document.querySelector('header');
+    if (header) {
+      var snapText = window.__DOCKHAND_SNAP_TIME__ || 'Static';
+      var existingBadge = document.getElementById('dh-snapshot-badge');
+      if (existingBadge) {
+        var valSpan = existingBadge.querySelector('[data-dh-snap-val]');
+        if (valSpan && valSpan.textContent !== snapText) valSpan.textContent = snapText;
+      } else {
+        var candidates = header.querySelectorAll('span, div');
+        for (var i = 0; i < candidates.length; i++) {
+          var el = candidates[i];
+          if ((el.textContent || '').trim() === 'Live' && el.children.length <= 1) {
+            var liveWrap = el.closest('[class*="text-emerald-500"]') || el.parentElement || el;
+            if (liveWrap && liveWrap.parentElement) {
+              liveWrap.setAttribute('data-dh-hide', '1');
+              var prev = liveWrap.previousElementSibling;
+              if (prev && /^\d{1,2}:\d{2}:\d{2}$/.test((prev.textContent || '').trim())) {
+                prev.setAttribute('data-dh-hide', '1');
+              }
+              var badge = document.createElement('span');
+              badge.id = 'dh-snapshot-badge';
+              badge.style.cssText = 'display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;margin-left:4px;white-space:nowrap;';
+              var lbl = document.createElement('span');
+              lbl.style.cssText = 'color:#10b981;font-weight:500;';
+              lbl.textContent = 'Snapshot:';
+              var val = document.createElement('span');
+              val.setAttribute('data-dh-snap-val', '1');
+              val.className = 'text-muted-foreground';
+              val.textContent = snapText;
+              badge.appendChild(lbl);
+              badge.appendChild(val);
+              liveWrap.parentElement.insertBefore(badge, liveWrap.nextSibling);
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+  function rewriteAll() {
+    document.querySelectorAll('a[href^="/"]').forEach(rewriteAnchor);
+    hideUnwantedControls();
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.closest && e.target.closest('.draggable-grid')) {
+      e.preventDefault();
+      e.stopPropagation();
+      var cLink = document.querySelector('a[href$="/containers"]');
+      if (cLink) cLink.click();
+      return;
+    }
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var rawHref = a.getAttribute('href') || '';
+    if (rawHref.charAt(0) === '/' && rawHref.indexOf('//') !== 0) {
+      rewriteAnchor(a);
+      if (!isAllowedRoute(a.getAttribute('href'))) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }
+  }, true);
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+  if (typeof MutationObserver !== 'undefined') {
+    new MutationObserver(function () { rewriteAll(); }).observe(document.documentElement, {
+      childList: true, subtree: true, attributes: true, attributeFilter: ['href']
+    });
+  }
+  document.addEventListener('DOMContentLoaded', rewriteAll);
+})();
+</script>
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+		<link rel="manifest" href="site.webmanifest" />
+		<script>
+			// Same rule as theme-toggle.svelte, applied before the bundle loads so the page never flashes white.
+			// The chosen dark theme's own background is applied to the boot screen too, so it matches the app
+			// (not the default navy) before app.css loads. Backgrounds mirror the .dark.theme-dark-* rules in
+			// app.css; app-boot-theme.test.ts fails if they drift.
+			try {
+				var t = localStorage.getItem('theme');
+				var isDark = t === 'dark' || (t !== 'light' && true);
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+					var darkBg = {
+						'default': '214.4 61.4% 17.3%', 'catppuccin': '240 21% 15%', 'dracula': '231 15% 18%',
+						'rose-pine': '249 22% 12%', 'rose-pine-moon': '246 24% 17%', 'tokyo-night': '235 21% 14%',
+						'nord': '220 16% 22%', 'one-dark': '220 13% 18%', 'gruvbox': '0 0% 16%',
+						'solarized': '192 100% 11%', 'everforest': '150 10% 16%', 'kanagawa': '225 17% 14%',
+						'monokai': '70 8% 15%', 'monokai-pro': '220 10% 18%', 'material': '200 19% 18%',
+						'palenight': '229 27% 20%', 'github': '215 21% 11%'
+					};
+					var id = (JSON.parse(localStorage.getItem('dockhand-theme') || '{}').darkTheme) || 'default';
+					document.documentElement.style.setProperty('--app-boot-bg', darkBg[id] || darkBg['default']);
+				}
+			} catch (e) {}
+		</script>
+		<style>
+			#app-boot { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: #fff; }
+			html.dark #app-boot { background: hsl(var(--app-boot-bg, 214.4 61.4% 17.3%)); }
+			#app-boot img { position: absolute; width: 40px; height: 40px; opacity: 0.85; }
+			#app-boot div { width: 64px; height: 64px; border-radius: 50%; border: 3px solid rgba(128, 128, 128, 0.2); border-top-color: hsl(217.2 91.2% 59.8%); animation: app-boot-spin 0.9s linear infinite; }
+			@keyframes app-boot-spin { to { transform: rotate(360deg); } }
+		</style>
+		<style>
+			button[title^="Theme:"],
+			button[title="Add environment"],
+			button[title="Lock tiles"],
+			button[title="Unlock tiles"],
+			button[title="Layout options"],
+			button[title="Refresh"],
+			button[title="Edit environment settings"],
+			button[title="Check for available updates"],
+			button[title="Prune containers"],
+			button[title^="Switch to vertical"],
+			button[title^="Wildcard search"],
+			button[title="Edit tags"],
+			[role="dialog"] button[title="Rename container"],
+			[role="dialog"] button[title="Terminal"],
+			[role="dialog"] button[title="Stop"],
+			[role="dialog"] button[title="Restart"],
+			[role="dialog"] button[title="Edit"],
+			[role="dialog"] button[title="Delete"],
+			[role="dialog"] button[title="View raw inspect data"],
+			.tile-resize-handle,
+			.draggable-grid .svelte-1ktb36m,
+			main table thead tr > th:first-child,
+			main table tbody tr > td:first-child,
+			main table thead tr > th:nth-child(12),
+			main table tbody tr > td:nth-child(12),
+			main table thead tr > th:nth-child(13),
+			main table tbody tr > td:nth-child(13),
+			main table thead tr > th:last-child,
+			main table tbody tr > td:last-child,
+			a[href*="/settings"],
+			[data-dh-hide="1"] {
+				display: none !important;
+			}
+			.draggable-grid {
+				pointer-events: auto !important;
+				cursor: pointer !important;
+			}
+			.draggable-grid * {
+				pointer-events: none !important;
+				cursor: pointer !important;
+			}
+			main table tbody a[href],
+			main table tbody td:nth-last-child(2) button {
+				pointer-events: none !important;
+				cursor: default !important;
+				text-decoration: none !important;
+			}
+		</style>
+		
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<!-- Shown while the bundle downloads; the root layout removes it once mounted. -->
+		<div id="app-boot" role="status" aria-label="Loading"><img src="/homelab/dockhand/logo.svg" alt="" /><div></div></div>
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_he0d3k = {
+						base: window.__DOCKHAND_BASE_NO_SLASH__
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import(window.__DOCKHAND_BASE__ + "_app/immutable/entry/start.B--1bsda.js"),
+						import(window.__DOCKHAND_BASE__ + "_app/immutable/entry/app.DaiVUlDv.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

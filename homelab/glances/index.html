@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glances</title>
+
+  <link rel="icon" type="image/x-icon" href="static/favicon.ico" />
+  <script>
+    window.__GLANCES__ = {
+      'refresh-time': '60'
+    };
+
+    (() => {
+      const LIVE_URL = 'https://homelab-telemetry.mattman0396.workers.dev/api/glances';
+      const SNAPSHOT_URL = '../data/glances.json';
+      const origFetch = window.fetch.bind(window);
+      let snapPromise = null;
+
+      function fetchLiveWithTimeout(url, ms) {
+        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const timer = controller ? setTimeout(() => controller.abort(), ms) : null;
+        const opts = controller ? { signal: controller.signal } : {};
+        return origFetch(url, opts).finally(() => {
+          if (timer !== null) clearTimeout(timer);
+        });
+      }
+
+      function getSnapshot() {
+        if (!snapPromise) {
+          snapPromise = fetchLiveWithTimeout(LIVE_URL, 3500)
+            .then((r) => {
+              if (!r.ok) throw new Error('Live HTTP ' + r.status);
+              return r.json();
+            })
+            .then((data) => {
+              if (!data || typeof data !== 'object' || !data.all) {
+                throw new Error('Invalid live payload');
+              }
+              return data;
+            })
+            .catch(() => origFetch(SNAPSHOT_URL, { cache: 'no-store' }).then((r) => r.json()));
+        }
+        return snapPromise;
+      }
+
+      const ROUTES = {
+        'api/4/all/views': (s) => s.views,
+        'api/4/all/limits': (s) => s.limits,
+        'api/4/all': (s) => {
+          const all = s.all || {};
+          return {
+            ...all,
+            npu: all.npu ?? [],
+            connections: all.connections ?? {},
+            ports: all.ports ?? [],
+            containers: all.containers ?? [],
+            diskio: all.diskio ?? [],
+            sensors: all.sensors ?? [],
+          };
+        },
+        'api/4/args': (s) => s.args,
+        'api/4/config': (s) => s.config,
+        'api/4/help': (s) => (s.all && s.all.help) || {},
+      };
+
+      window.fetch = function (input, init) {
+        const rawUrl = typeof input === 'string' ? input : (input && input.url) || '';
+        const cleanPath = rawUrl.split('?')[0].replace(/^https?:\/\/[^/]+/, '').replace(/^\/+/, '');
+        for (const [suffix, pick] of Object.entries(ROUTES)) {
+          if (cleanPath === suffix || cleanPath.endsWith('/' + suffix)) {
+            return getSnapshot().then(
+              (s) =>
+                new Response(JSON.stringify(pick(s)), {
+                  status: 200,
+                  headers: { 'Content-Type': 'application/json' },
+                })
+            );
+          }
+        }
+        if (cleanPath.startsWith('api/4/') || cleanPath.includes('/api/4/')) {
+          return Promise.resolve(
+            new Response('{}', {
+              status: 200,
+              headers: { 'Content-Type': 'application/json' },
+            })
+          );
+        }
+        return origFetch(input, init);
+      };
+    })();
+  </script>
+  <script src="static/glances.js" defer></script>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>

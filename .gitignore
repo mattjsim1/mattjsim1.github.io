@@ -3,3 +3,7 @@ Goose.jpg
 TODO.md
 favicon.zip
 *.code-workspace
+.agents/
+.claude/
+HANDOFF.md
+AGENTS.md

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scheme-dark theme-slate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>basement-server</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2372b4f5'/><stop offset='1' stop-color='%23356ebf'/></linearGradient></defs><rect x='1.5' y='1.5' width='61' height='61' rx='11' fill='url(%23g)' stroke='%23daefff' stroke-width='3'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='28'><tspan fill='%23c8e8ff'>M</tspan><tspan fill='%23ffffff'>S</tspan></text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Jost:ital,wght@0,200;1,200&family=Manrope:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homelab.css">
+</head>
+<body>
+  <div id="welcome-greeting">
+    <span class="greeting-prompt">matt@basement-server C:\&gt;</span>
+    <span class="greeting-center">
+      <span class="greeting-text">Welcome home.</span><span class="greeting-cursor" aria-hidden="true"></span>
+    </span>
+  </div>
+
+  <div id="__next">
+    <div id="page_wrapper">
+      <div id="inner_wrapper">
+        <div class="container">
+          <div id="layout-groups">
+
+            <!-- Column 1: Media (+ Media Utilities sub-group) -->
+            <div class="services-group">
+              <button type="button" class="group-toggle" aria-expanded="true" data-group="media">
+                <div class="service-group-icon" style="-webkit-mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/play-box-multiple.svg');mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/play-box-multiple.svg');"></div>
+                <h2 class="service-group-name">Media</h2>
+                <svg class="group-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path>
+                </svg>
+              </button>
+
+              <ul class="services-list" data-group-list="media">
+                <li class="service">
+                  <div>
+                    <div class="service-tags">
+                      <div class="service-tag">8 MS</div>
+                      <div class="service-tag">HEALTHY</div>
+                    </div>
+                    <div class="service-title">
+                      <div class="service-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png" alt="Jellyfin">
+                      </div>
+                      <div class="service-name-wrap">
+                        <div class="service-name">Jellyfin</div>
+                        <div class="service-description">Media server</div>
+                      </div>
+                    </div>
+                    <div class="service-container">
+                      <div class="service-block">
+                        <div class="service-block-value">13</div>
+                        <div class="service-block-label">MOVIES</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">17</div>
+                        <div class="service-block-label">SERIES</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">229</div>
+                        <div class="service-block-label">EPISODES</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">0</div>
+                        <div class="service-block-label">SONGS</div>
+                      </div>
+                    </div>
+                    <div class="jellyfin-now-playing">
+                      <div class="jf-row">
+                        <div class="jf-title">Active Stream &middot; 1080p Direct Play</div>
+                        <svg class="jf-episode-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                          <path fill="none" d="M0 0h24v24H0z"></path>
+                          <path d="M9.5 7.5v9l7-4.5z"></path>
+                          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 14.01H4V5.99h16z"></path>
+                        </svg>
+                      </div>
+                      <div class="jf-row">
+                        <div class="jf-progress" style="width: 1.03%;"></div>
+                        <svg class="jf-play-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                          <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"></path>
+                        </svg>
+                        <div class="jf-time">00:18<span class="jf-slash">/</span>29:56</div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <!-- Sub-group: Media Utilities -->
+                <div class="services-group subgroup">
+                  <button type="button" class="group-toggle" aria-expanded="true" data-group="media-utilities">
+                    <div class="service-group-icon" style="-webkit-mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/cog-outline.svg');mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/cog-outline.svg');"></div>
+                    <h2 class="service-group-name">Media Utilities</h2>
+                    <svg class="group-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path fill="none" d="M0 0h24v24H0z"></path>
+                      <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path>
+                    </svg>
+                  </button>
+
+                  <ul class="services-list" data-group-list="media-utilities">
+                    <li class="service">
+                      <div>
+                        <div class="service-tags">
+                          <div class="service-tag">27 MS</div>
+                          <div class="service-tag">RUNNING</div>
+                        </div>
+                        <div class="service-title">
+                          <div class="service-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/sonarr.png" alt="Sonarr">
+                          </div>
+                          <div class="service-name-wrap">
+                            <div class="service-name">Sonarr</div>
+                            <div class="service-description">TV automation</div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li class="service">
+                      <div>
+                        <div class="service-tags">
+                          <div class="service-tag">20 MS</div>
+                          <div class="service-tag">RUNNING</div>
+                        </div>
+                        <div class="service-title">
+                          <div class="service-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/radarr.png" alt="Radarr">
+                          </div>
+                          <div class="service-name-wrap">
+                            <div class="service-name">Radarr</div>
+                            <div class="service-description">Movie automation</div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li class="service">
+                      <div>
+                        <div class="service-tags">
+                          <div class="service-tag">RUNNING</div>
+                        </div>
+                        <div class="service-title">
+                          <div class="service-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/unpackerr.png" alt="Unpackerr">
+                          </div>
+                          <div class="service-name-wrap">
+                            <div class="service-name">Unpackerr</div>
+                            <div class="service-description">Unpacks RAR downloads for Sonarr/Radarr</div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </ul>
+            </div>
+
+            <!-- Column 2: Torrents -->
+            <div class="services-group">
+              <button type="button" class="group-toggle" aria-expanded="true" data-group="torrents">
+                <div class="service-group-icon" style="-webkit-mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/download-circle.svg');mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/download-circle.svg');"></div>
+                <h2 class="service-group-name">Torrents</h2>
+                <svg class="group-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path>
+                </svg>
+              </button>
+
+              <ul class="services-list" data-group-list="torrents">
+                <li class="service">
+                  <div>
+                    <div class="service-tags">
+                      <div class="service-tag">5 MS</div>
+                    </div>
+                    <div class="service-title">
+                      <div class="service-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png" alt="qBittorrent">
+                      </div>
+                      <div class="service-name-wrap">
+                        <div class="service-name">qBittorrent</div>
+                        <div class="service-description">Torrent client</div>
+                      </div>
+                    </div>
+                    <div class="service-container">
+                      <div class="service-block">
+                        <div class="service-block-value">0</div>
+                        <div class="service-block-label">LEECH</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">0 B/s</div>
+                        <div class="service-block-label">DOWNLOAD</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">1</div>
+                        <div class="service-block-label">SEED</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">0 B/s</div>
+                        <div class="service-block-label">UPLOAD</div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="service">
+                  <div>
+                    <div class="service-tags">
+                      <div class="service-tag">17 MS</div>
+                      <div class="service-tag">RUNNING</div>
+                    </div>
+                    <div class="service-title">
+                      <div class="service-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prowlarr.png" alt="Prowlarr">
+                      </div>
+                      <div class="service-name-wrap">
+                        <div class="service-name">Prowlarr</div>
+                        <div class="service-description">Indexer manager</div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 3: Utilities -->
+            <div class="services-group">
+              <button type="button" class="group-toggle" aria-expanded="true" data-group="utilities">
+                <div class="service-group-icon" style="-webkit-mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/tools.svg');mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/tools.svg');"></div>
+                <h2 class="service-group-name">Utilities</h2>
+                <svg class="group-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path>
+                </svg>
+              </button>
+
+              <ul class="services-list" data-group-list="utilities">
+                <li class="service">
+                  <div>
+                    <div class="service-tags">
+                      <div class="service-tag">24 MS</div>
+                      <div class="service-tag">HEALTHY</div>
+                    </div>
+                    <div class="service-title">
+                      <div class="service-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/pi-hole.png" alt="Pi-hole">
+                      </div>
+                      <div class="service-name-wrap">
+                        <div class="service-name">Pi-hole</div>
+                        <div class="service-description">DNS ad blocker</div>
+                      </div>
+                    </div>
+                    <div class="service-container">
+                      <div class="service-block">
+                        <div class="service-block-value">50,983</div>
+                        <div class="service-block-label">QUERIES</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">1,169 (2%)</div>
+                        <div class="service-block-label">BLOCKED</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">285,610</div>
+                        <div class="service-block-label">GRAVITY</div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="service">
+                  <div>
+                    <div class="service-title">
+                      <div class="service-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/sunshine.png" alt="Sunshine">
+                      </div>
+                      <div class="service-name-wrap">
+                        <div class="service-name">Sunshine</div>
+                        <div class="service-description">Desktop streaming host</div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="service">
+                  <div>
+                    <div class="service-title">
+                      <div class="service-icon">
+                        <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tailscale-light.png" alt="Tailscale">
+                      </div>
+                      <div class="service-name-wrap">
+                        <div class="service-name">Tailscale</div>
+                        <div class="service-description">VPN / remote access</div>
+                      </div>
+                    </div>
+                    <div class="service-container">
+                      <div class="service-block">
+                        <div class="service-block-value">100.x.x.x</div>
+                        <div class="service-block-label">ADDRESS</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">2m Ago</div>
+                        <div class="service-block-label">LAST SEEN</div>
+                      </div>
+                      <div class="service-block">
+                        <div class="service-block-value">20w</div>
+                        <div class="service-block-label">EXPIRES</div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 4: Monitoring -->
+            <div class="services-group">
+              <button type="button" class="group-toggle" aria-expanded="true" data-group="monitoring">
+                <div class="service-group-icon" style="-webkit-mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/monitor-dashboard.svg');mask-image:url('https://cdn.jsdelivr.net/npm/@mdi/svg@latest/svg/monitor-dashboard.svg');"></div>
+                <h2 class="service-group-name">Monitoring</h2>
+                <svg class="group-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"></path>
+                </svg>
+              </button>
+
+              <ul class="services-list" data-group-list="monitoring">
+                <li class="service">
+                  <div>
+                    <a class="service-link" href="glances/">
+                      <div class="service-tags">
+                        <div class="service-tag">4 MS</div>
+                      </div>
+                      <div class="service-title">
+                        <div class="service-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glances.png" alt="Glances">
+                        </div>
+                        <div class="service-name-wrap">
+                          <div class="service-name">Glances</div>
+                          <div class="service-description">Live activity monitor</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+
+                <li class="service">
+                  <div>
+                    <a class="service-link" href="dockhand/">
+                      <div class="service-tags">
+                        <div class="service-tag">20 MS</div>
+                        <div class="service-tag">HEALTHY</div>
+                      </div>
+                      <div class="service-title">
+                        <div class="service-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/dockhand.png" alt="Dockhand">
+                        </div>
+                        <div class="service-name-wrap">
+                          <div class="service-name">Dockhand</div>
+                          <div class="service-description">Docker management</div>
+                        </div>
+                      </div>
+                      <div class="service-container">
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-dh-running">12</div>
+                          <div class="service-block-label">RUNNING</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-dh-total">12</div>
+                          <div class="service-block-label">TOTAL</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-dh-cpu">8.8%</div>
+                          <div class="service-block-label">CPU</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-dh-mem">17.7%</div>
+                          <div class="service-block-label">MEMORY</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+
+                <li class="service">
+                  <div>
+                    <a class="service-link" href="scrutiny/">
+                      <div class="service-tags">
+                        <div class="service-tag">4 MS</div>
+                        <div class="service-tag">RUNNING</div>
+                      </div>
+                      <div class="service-title">
+                        <div class="service-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/scrutiny.png" alt="Scrutiny">
+                        </div>
+                        <div class="service-name-wrap">
+                          <div class="service-name">Scrutiny</div>
+                          <div class="service-description">Drive health</div>
+                        </div>
+                      </div>
+                      <div class="service-container">
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-sc-passed">4</div>
+                          <div class="service-block-label">PASSED</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-sc-failed">0</div>
+                          <div class="service-block-label">FAILED</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value">0</div>
+                          <div class="service-block-label">UNKNOWN</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+
+                <li class="service">
+                  <div>
+                    <a class="service-link" href="gatus/">
+                      <div class="service-tags">
+                        <div class="service-tag">18 MS</div>
+                        <div class="service-tag">RUNNING</div>
+                      </div>
+                      <div class="service-title">
+                        <div class="service-icon">
+                          <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gatus.png" alt="Gatus">
+                        </div>
+                        <div class="service-name-wrap">
+                          <div class="service-name">Gatus</div>
+                          <div class="service-description">Health status page</div>
+                        </div>
+                      </div>
+                      <div class="service-container">
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-gt-up">11</div>
+                          <div class="service-block-label">SITES UP</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-gt-down">0</div>
+                          <div class="service-block-label">SITES DOWN</div>
+                        </div>
+                        <div class="service-block">
+                          <div class="service-block-value" id="m-gt-pct">100%</div>
+                          <div class="service-block-label">UPTIME</div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+          <footer id="footer">
+            <div id="telemetry-status" class="telemetry-status" aria-live="polite">
+              <span class="telemetry-dot"></span>
+              <span id="telemetry-status-text">Loading telemetry…</span>
+            </div>
+            <div id="style">
+              <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+                <svg class="theme-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5M2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1m18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1M11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1m0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1M5.99 4.58a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41zm12.37 12.37a.996.996 0 0 0-1.41 0 .996.996 0 0 0 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 0 0 0-1.41zm1.06-10.96a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0zM7.05 18.36a.996.996 0 0 0 0-1.41.996.996 0 0 0-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0z"></path>
+                </svg>
+                <svg class="theme-switch" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5m0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3"></path>
+                </svg>
+                <svg class="theme-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1"></path>
+                </svg>
+              </button>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="starfield.js"></script>
+  <script src="homelab.js"></script>
+</body>
+</html>

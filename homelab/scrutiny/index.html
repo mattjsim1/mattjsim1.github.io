@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>scrutiny</title>
+
+        <script>
+            (function () {
+                var p = window.location.pathname;
+                var i = p.indexOf('/scrutiny');
+                var base = i >= 0 ? p.slice(0, i + 9) + '/' : '/';
+                window.__SCRUTINY_BASE__ = base.replace(/\/$/, '') || '/';
+                var baseEl = document.createElement('base');
+                baseEl.setAttribute('href', base);
+                document.head.appendChild(baseEl);
+
+                var liveUrl = 'https://homelab-telemetry.mattman0396.workers.dev/api/scrutiny';
+                var snapUrl = window.location.origin + base + '../data/scrutiny.json';
+                var origFetch = window.fetch.bind(window);
+                var snapPromise = null;
+
+                function fetchLiveWithTimeout(url, ms) {
+                    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+                    var timer = controller ? setTimeout(function () { controller.abort(); }, ms) : null;
+                    var opts = controller ? { signal: controller.signal } : {};
+                    return origFetch(url, opts).finally(function () {
+                        if (timer !== null) clearTimeout(timer);
+                    });
+                }
+
+                function getSnapshot() {
+                    if (!snapPromise) {
+                        snapPromise = fetchLiveWithTimeout(liveUrl, 3500)
+                            .then(function (r) {
+                                if (!r.ok) throw new Error('Live HTTP ' + r.status);
+                                return r.json();
+                            })
+                            .then(function (data) {
+                                if (!data || typeof data !== 'object' || !data.summary) {
+                                    throw new Error('Invalid live payload');
+                                }
+                                return data;
+                            })
+                            .catch(function () {
+                                return origFetch(snapUrl, { cache: 'no-store' }).then(function (r) { return r.json(); });
+                            });
+                    }
+                    return snapPromise;
+                }
+
+                function resolveApiPayload(rawUrl, method, snap) {
+                    var clean = String(rawUrl || '').split('?')[0].replace(/^https?:\/\/[^/]+/, '').replace(/^\/+/, '');
+                    var apiIdx = clean.indexOf('api/');
+                    if (apiIdx < 0) return { matched: false };
+                    var apiPath = clean.slice(apiIdx);
+                    if (method && method.toUpperCase() !== 'GET') {
+                        return { matched: true, data: { success: true } };
+                    }
+                    if (apiPath === 'api/summary/temp') return { matched: true, data: snap.temp };
+                    if (apiPath === 'api/summary') return { matched: true, data: snap.summary };
+                    if (apiPath === 'api/settings') return { matched: true, data: snap.settings };
+                    var m = apiPath.match(/^api\/device\/([^/]+)\/details$/);
+                    if (m && snap.details && snap.details[m[1]]) {
+                        return { matched: true, data: snap.details[m[1]] };
+                    }
+                    return { matched: true, data: { success: true, data: {} } };
+                }
+
+                window.fetch = function (input, init) {
+                    var url = typeof input === 'string' ? input : (input && input.url) || '';
+                    var method = (init && init.method) || (typeof input !== 'string' && input && input.method) || 'GET';
+                    var clean = String(url).split('?')[0];
+                    if (clean.indexOf('/api/') >= 0 || clean.indexOf('api/') === 0) {
+                        return getSnapshot().then(function (snap) {
+                            var res = resolveApiPayload(url, method, snap);
+                            return new Response(JSON.stringify(res.data), {
+                                status: 200,
+                                headers: { 'Content-Type': 'application/json' }
+                            });
+                        });
+                    }
+                    return origFetch(input, init);
+                };
+
+                var origOpen = XMLHttpRequest.prototype.open;
+                var origSend = XMLHttpRequest.prototype.send;
+
+                XMLHttpRequest.prototype.open = function (method, url) {
+                    this._shimMethod = method || 'GET';
+                    this._shimUrl = String(url || '');
+                    return origOpen.apply(this, arguments);
+                };
+
+                XMLHttpRequest.prototype.send = function () {
+                    var xhr = this;
+                    var clean = xhr._shimUrl.split('?')[0];
+                    if (clean.indexOf('/api/') >= 0 || clean.indexOf('api/') === 0) {
+                        getSnapshot().then(function (snap) {
+                            var res = resolveApiPayload(xhr._shimUrl, xhr._shimMethod, snap);
+                            var jsonText = JSON.stringify(res.data);
+                            var respVal = xhr.responseType === 'json' ? res.data : jsonText;
+                            Object.defineProperty(xhr, 'readyState', { configurable: true, get: function () { return 4; } });
+                            Object.defineProperty(xhr, 'status', { configurable: true, get: function () { return 200; } });
+                            Object.defineProperty(xhr, 'statusText', { configurable: true, get: function () { return 'OK'; } });
+                            Object.defineProperty(xhr, 'responseText', { configurable: true, get: function () { return jsonText; } });
+                            Object.defineProperty(xhr, 'response', { configurable: true, get: function () { return respVal; } });
+                            Object.defineProperty(xhr, 'responseURL', { configurable: true, get: function () { return xhr._shimUrl; } });
+                            xhr.getResponseHeader = function (name) {
+                                return name && name.toLowerCase() === 'content-type' ? 'application/json' : null;
+                            };
+                            xhr.getAllResponseHeaders = function () {
+                                return 'content-type: application/json\r\n';
+                            };
+                            xhr.dispatchEvent(new Event('readystatechange'));
+                            xhr.dispatchEvent(new ProgressEvent('load'));
+                            xhr.dispatchEvent(new ProgressEvent('loadend'));
+                        });
+                        return;
+                    }
+                    return origSend.apply(this, arguments);
+                };
+
+                function applyReadOnlyUi() {
+                    var btns = document.querySelectorAll('button.mat-stroked-button, .mat-menu-panel button, .mat-menu-item');
+                    for (var i = 0; i < btns.length; i++) {
+                        var txt = (btns[i].textContent || '').trim().toLowerCase();
+                        if (txt.indexOf('archived') >= 0 || txt.indexOf('export') >= 0 || txt.indexOf('settings') >= 0) {
+                            btns[i].style.setProperty('display', 'none', 'important');
+                        }
+                    }
+                    var rowMenus = document.querySelectorAll('div.ml-auto button.mat-menu-trigger');
+                    for (var j = 0; j < rowMenus.length; j++) {
+                        rowMenus[j].style.setProperty('display', 'none', 'important');
+                    }
+                }
+
+                function startReadOnlyObserver() {
+                    if (!document.body) return;
+                    applyReadOnlyUi();
+                    new MutationObserver(applyReadOnlyUi).observe(document.body, { childList: true, subtree: true });
+                }
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', startReadOnlyObserver);
+                } else {
+                    startReadOnlyObserver();
+                }
+            })();
+        </script>
+        <style>
+            /* Read-only portfolio gating: hide mobile overflow & drive-row action menu */
+            div.hidden.xs\:flex,
+            div.ml-auto button.mat-menu-trigger {
+                display: none !important;
+            }
+        </style>
+
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="manifest" href="./manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+
+        <!-- Fonts -->
+        <link href="assets/fonts/roboto/roboto.css" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/fonts/roboto/roboto.css"></noscript>
+
+        <link href="assets/fonts/ibm-plex-mono/ibm-plex-mono.css" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/fonts/ibm-plex-mono/ibm-plex-mono.css"></noscript>
+
+        <link href="assets/fonts/inter/inter.css" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/fonts/inter/inter.css"></noscript>
+
+        <!-- Icon Fonts -->
+        <link href="assets/fonts/material-icons/material-icons.css" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="assets/fonts/material-icons/material-icons.css"></noscript>
+
+        <!-- Splash screen styles -->
+        <style>
+            body treo-splash-screen {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #1A202E;
+                color: #FBFDFE;
+                z-index: 999999;
+                pointer-events: none;
+                opacity: 1;
+                visibility: visible;
+                transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            body treo-splash-screen img {
+                width: 120px;
+                max-width: 120px;
+            }
+
+            body treo-splash-screen .spinner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 40px;
+                width: 56px;
+            }
+
+            body treo-splash-screen .spinner > div {
+                width: 12px;
+                height: 12px;
+                background-color: #F50057;
+                border-radius: 100%;
+                display: inline-block;
+                -webkit-animation: treo-bouncedelay 1s infinite ease-in-out both;
+                animation: treo-bouncedelay 1s infinite ease-in-out both;
+            }
+
+            body treo-splash-screen .spinner .bounce1 {
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+
+            body treo-splash-screen .spinner .bounce2 {
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+
+            @-webkit-keyframes treo-bouncedelay {
+                0%, 80%, 100% {
+                    -webkit-transform: scale(0)
+                }
+                40% {
+                    -webkit-transform: scale(1.0)
+                }
+            }
+
+            @keyframes treo-bouncedelay {
+                0%, 80%, 100% {
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                }
+                40% {
+                    -webkit-transform: scale(1.0);
+                    transform: scale(1.0);
+                }
+            }
+
+            body:not(.treo-splash-screen-hidden) {
+                overflow: hidden;
+            }
+
+            body.treo-splash-screen-hidden treo-splash-screen {
+                visibility: hidden;
+                opacity: 0;
+            }
+        </style>
+
+    <style>@charset "UTF-8";html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}img{border-style:none}html{box-sizing:border-box;font-family:sans-serif}*,*:before,*:after{box-sizing:inherit}html{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";line-height:1.5}*,*:before,*:after{border-width:0;border-style:solid}img{border-style:solid}img{display:block;vertical-align:middle}img{max-width:100%;height:auto}*{text-rendering:optimizeLegibility;-o-text-rendering:optimizeLegibility;-ms-text-rendering:optimizeLegibility;-moz-text-rendering:optimizeLegibility;-webkit-text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent}*:focus{outline:none!important}html,body{display:flex;flex-direction:column;flex:1 1 auto;width:100%;min-height:100%;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto}img{width:100%;vertical-align:top}html{font-size:16px}body{font-size:.875rem;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji"}.treo-theme-light{color:#27303f;background-color:#f1f5f9}.treo-theme-light *,.treo-theme-light *:before,.treo-theme-light *:after{border-color:#e2e8f0}</style><link rel="stylesheet" href="styles.ebe2a559042b9da6.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.ebe2a559042b9da6.css"></noscript></head>
+
+    <body class="treo-theme-light">
+
+        <!-- Splash screen -->
+        <treo-splash-screen>
+            <img src="assets/images/logo/scrutiny-logo-white.svg" alt="Scrutiny logo">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </treo-splash-screen>
+
+        <!-- App root -->
+        <app-root></app-root>
+
+    <script src="runtime.cbcf33e855e09efb.js" type="module"></script><script src="polyfills.79a033ed2da1aef5.js" type="module"></script><script src="main.124a69d5b4059092.js?v=2" type="module"></script>
+
+
+</body></html>

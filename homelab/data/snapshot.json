@@ -1,0 +1,3837 @@
+{
+  "sampledAt": "2026-11-28T05:23:21.335685Z",
+  "glances": {
+    "system": {
+      "os_name": "Windows",
+      "hostname": "basement-server",
+      "platform": "64bit",
+      "os_version": "11 SP0",
+      "hr_name": "Windows 11 SP0 64bit"
+    },
+    "uptime": "5:22:47",
+    "now": {
+      "iso": "2026-11-28T00:23:21-05:00",
+      "custom": "2026-11-28 00:23:21 -0500"
+    },
+    "ip": {
+      "address": "192.x.x.x",
+      "mask_cidr": 24
+    },
+    "quicklook": {
+      "cpu_name": "AMD Ryzen 5 5500",
+      "cpu_hz_current": 3600000000.0,
+      "cpu_hz": 3600000000.0,
+      "cpu": 46.2,
+      "mem": 73.8,
+      "swap": 37.9,
+      "load": 0.8,
+      "cpu_phys_core": 6,
+      "cpu_log_core": 12
+    },
+    "cpu": {
+      "total": 46.2,
+      "user": 15.8,
+      "system": 26.6,
+      "idle": 56.2,
+      "dpc": 0.5,
+      "interrupt": null
+    },
+    "load": {
+      "min1": 0.66,
+      "min5": 0.2,
+      "min15": 0.1,
+      "cpucore": 12
+    },
+    "mem": {
+      "total": 17061138432,
+      "used": 12668559360,
+      "free": 4392579072,
+      "available": 4392579072,
+      "percent": 74.3
+    },
+    "memswap": {
+      "total": 6484176896,
+      "used": 2457288704,
+      "free": 4026888192,
+      "percent": 37.9
+    },
+    "fs": [
+      {
+        "mnt_point": "C:\\",
+        "fs_type": "NTFS",
+        "size": 506332180480,
+        "used": 195525410816,
+        "free": 310806769664,
+        "percent": 38.6
+      },
+      {
+        "mnt_point": "D:\\",
+        "fs_type": "NTFS",
+        "size": 998444605440,
+        "used": 570936143872,
+        "free": 427508461568,
+        "percent": 57.2
+      },
+      {
+        "mnt_point": "F:\\",
+        "fs_type": "NTFS",
+        "size": 224585052160,
+        "used": 156725248,
+        "free": 224428326912,
+        "percent": 0.1
+      }
+    ],
+    "network": [
+      {
+        "interface_name": "Tailscale",
+        "bytes_recv_rate_per_sec": 0.0,
+        "bytes_sent_rate_per_sec": 45.0,
+        "speed": 4502585344
+      },
+      {
+        "interface_name": "Ethernet 2",
+        "bytes_recv_rate_per_sec": 10164.0,
+        "bytes_sent_rate_per_sec": 32476.0,
+        "speed": 1048576000
+      }
+    ],
+    "processcount": {
+      "total": 290,
+      "running": 286,
+      "sleeping": 0,
+      "thread": null
+    },
+    "processes": [
+      {
+        "pid": 16616,
+        "name": "chrome.exe",
+        "cmdline": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --type=gpu-process --gpu-recent-crash-count=0 --no-pre-read-main-dll --gpu-preferences=WAAAAAAAAABgAACBAAAAAAAAAAAAAGAAQAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --use-gl=angle --use-angle=d3d11-warp-webgl --metrics-shmem-handle=1928,i,7739543247212899511,7690813023195589065,262144 --field-trial-handle=2052,i,4249720493283880901,1579550782939479223,262144 --variations-seed-version --pseudonymization-salt-handle=2056,i,10561413434254892731,2326098553697071609,4 --trace-process-track-uuid=3190708988185955192 --mojo-platform-channel-handle=2044 /prefetch:2",
+        "cpu_percent": 104.3,
+        "memory_percent": 1.1,
+        "rss": 194072576,
+        "time_plus": "3:45:45",
+        "status": "R"
+      },
+      {
+        "pid": 6836,
+        "name": "python.exe",
+        "cmdline": "C:\\Users\\user\\glances\\venv\\Scripts\\python.exe -m glances -C C:\\Users\\user\\glances\\glances.conf -w -B 0.0.0.0 -p 61208 --process-focus name:^(?!vmmemWSL$).*",
+        "cpu_percent": 67.0,
+        "memory_percent": 0.4,
+        "rss": 64024576,
+        "time_plus": "0:09:38",
+        "status": "R"
+      },
+      {
+        "pid": 14424,
+        "name": "SearchIndexer.exe",
+        "cmdline": "SearchIndexer.exe",
+        "cpu_percent": 39.7,
+        "memory_percent": 0.3,
+        "rss": 59252736,
+        "time_plus": "0:16:59",
+        "status": "R"
+      },
+      {
+        "pid": 4368,
+        "name": "chrome.exe",
+        "cmdline": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --type=renderer --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --no-pre-read-main-dll --disable-gpu-compositing --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=210 --launch-time-ticks=15157154653 --metrics-shmem-handle=6820,i,3224699535352533026,1439262726579565038,1572864 --field-trial-handle=2052,i,4249720493283880901,1579550782939479223,262144 --variations-seed-version --pseudonymization-salt-handle=2056,i,10561413434254892731,2326098553697071609,4 --trace-process-track-uuid=3190709183090659784 --mojo-platform-channel-handle=9360 /prefetch:1",
+        "cpu_percent": 22.2,
+        "memory_percent": 1.2,
+        "rss": 204333056,
+        "time_plus": "0:12:10",
+        "status": "R"
+      },
+      {
+        "pid": 16412,
+        "name": "chrome.exe",
+        "cmdline": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --type=renderer --origin-trial-disabled-features=CanvasTextNg|WebAssemblyCustomDescriptors --no-pre-read-main-dll --disable-gpu-compositing --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=163 --launch-time-ticks=6011539333 --metrics-shmem-handle=9880,i,160228121082673171,11172791396637415047,1572864 --field-trial-handle=2052,i,4249720493283880901,1579550782939479223,262144 --variations-seed-version --pseudonymization-salt-handle=2056,i,10561413434254892731,2326098553697071609,4 --trace-process-track-uuid=3190709139049692881 --mojo-platform-channel-handle=9952 /prefetch:1",
+        "cpu_percent": 19.5,
+        "memory_percent": 1.3,
+        "rss": 224595968,
+        "time_plus": "0:43:39",
+        "status": "R"
+      },
+      {
+        "pid": 1616,
+        "name": "dwm.exe",
+        "cmdline": "dwm.exe",
+        "cpu_percent": 16.9,
+        "memory_percent": 0.6,
+        "rss": 104914944,
+        "time_plus": "0:34:56",
+        "status": "R"
+      },
+      {
+        "pid": 4,
+        "name": "System",
+        "cmdline": "System",
+        "cpu_percent": 9.7,
+        "memory_percent": 0.0,
+        "rss": 176128,
+        "time_plus": "0:21:58",
+        "status": "R"
+      },
+      {
+        "pid": 5176,
+        "name": "MsMpEng.exe",
+        "cmdline": "MsMpEng.exe",
+        "cpu_percent": 7.3,
+        "memory_percent": 1.8,
+        "rss": 306876416,
+        "time_plus": "0:19:59",
+        "status": "R"
+      },
+      {
+        "pid": 18112,
+        "name": "com.docker.backend.exe",
+        "cmdline": "C:\\Program Files\\Docker\\Docker\\resources\\com.docker.backend.exe services",
+        "cpu_percent": 6.2,
+        "memory_percent": 1.4,
+        "rss": 235405312,
+        "time_plus": "0:11:40",
+        "status": "R"
+      },
+      {
+        "pid": 7980,
+        "name": "chrome.exe",
+        "cmdline": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe --no-startup-window /prefetch:5",
+        "cpu_percent": 6.0,
+        "memory_percent": 1.9,
+        "rss": 320638976,
+        "time_plus": "0:10:36",
+        "status": "R"
+      },
+      {
+        "pid": 19652,
+        "name": "dllhost.exe",
+        "cmdline": "C:\\WINDOWS\\system32\\DllHost.exe /Processid:{DFB65C4C-B34F-435D-AFE9-A86218684AA8}",
+        "cpu_percent": 4.1,
+        "memory_percent": 0.1,
+        "rss": 12914688,
+        "time_plus": "0:07:24",
+        "status": "R"
+      },
+      {
+        "pid": 20136,
+        "name": "Docker Desktop.exe",
+        "cmdline": "C:\\Program Files\\Docker\\Docker\\frontend\\Docker Desktop.exe --type=renderer --user-data-dir=C:\\Users\\user\\AppData\\Roaming\\Docker Desktop --standard-schemes=app --enable-sandbox --secure-schemes=app --cors-schemes=dd --fetch-schemes=dd --code-cache-schemes=app --app-user-model-id=Docker.DockerForWindows.Settings --app-path=C:\\Program Files\\Docker\\Docker\\frontend\\resources\\app.asar --enable-sandbox --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=37428038 --field-trial-handle=1760,i,16328935618894966876,7855637603652474826,262144 --enable-features=AllowWindowCaptureExclusionInRemoteSessions,PdfUseShowSaveFilePicker --disable-features=DropInputEventsWhilePaintHolding,LocalNetworkAccessChecks,NetworkServiceSandbox,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TraceSiteInstanceGetProcessCreation --variations-seed-version --pseudonymization-salt-handle=1804,i,13275410905457746275,5613466301753394630,4 --trace-process-track-uuid=3190708990997080739 --mojo-platform-channel-handle=3264 --desktop-ui-preload-params={\"needsBackendErrorsIpcClient\":true,\"needsPrimaryIpcClient\":true} /prefetch:1",
+        "cpu_percent": 3.1,
+        "memory_percent": 0.9,
+        "rss": 149536768,
+        "time_plus": "0:03:30",
+        "status": "R"
+      },
+      {
+        "pid": 12052,
+        "name": "SearchProtocolHost.exe",
+        "cmdline": "SearchProtocolHost.exe",
+        "cpu_percent": 2.9,
+        "memory_percent": 0.1,
+        "rss": 24342528,
+        "time_plus": "0:00:07",
+        "status": "R"
+      },
+      {
+        "pid": 11160,
+        "name": "Antigravity.exe",
+        "cmdline": "C:\\Users\\user\\AppData\\Local\\Programs\\antigravity\\Antigravity.exe --type=renderer --user-data-dir=C:\\Users\\user\\AppData\\Roaming\\Antigravity --standard-schemes=plugin,agy-favicon,agy-browser-stream --secure-schemes=plugin,agy-favicon,agy-browser-stream --cors-schemes=plugin --fetch-schemes=plugin --service-worker-schemes=plugin --code-cache-schemes=plugin --app-path=C:\\Users\\user\\AppData\\Local\\Programs\\antigravity\\resources\\app.asar --enable-sandbox --disable-blink-features=AutomationControlled --video-capture-use-gpu-memory-buffer --lang=en-US --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=3227000601 --field-trial-handle=1720,i,13287127972845773413,9714301575460617137,262144 --enable-features=AllowWindowCaptureExclusionInRemoteSessions,PdfUseShowSaveFilePicker --disable-features=CalculateNativeWinOcclusion,DropInputEventsWhilePaintHolding,FedCm,LocalNetworkAccessChecks,NetworkServiceSandbox,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TraceSiteInstanceGetProcessCreation --variations-seed-version --pseudonymization-salt-handle=1728,i,6576542417439206349,16343198965931856161,4 --trace-process-track-uuid=3190708992871164437 --mojo-platform-channel-handle=4044 /prefetch:1",
+        "cpu_percent": 2.3,
+        "memory_percent": 2.4,
+        "rss": 407482368,
+        "time_plus": "0:16:53",
+        "status": "R"
+      },
+      {
+        "pid": 9468,
+        "name": "tailscaled.exe",
+        "cmdline": "tailscaled.exe",
+        "cpu_percent": 1.4,
+        "memory_percent": 0.4,
+        "rss": 67452928,
+        "time_plus": "0:04:30",
+        "status": "R"
+      },
+      {
+        "pid": 14956,
+        "name": "nvcontainer.exe",
+        "cmdline": "C:\\Program Files\\NVIDIA Corporation\\NvContainer\\nvcontainer.exe -f C:\\ProgramData\\NVIDIA Corporation\\NVIDIA App\\NvContainer\\NvContainerUser%d.log -d C:\\Program Files\\NVIDIA Corporation\\NvContainer\\plugins\\User -r -l 3 -p 30000 -c",
+        "cpu_percent": 1.2,
+        "memory_percent": 0.4,
+        "rss": 65531904,
+        "time_plus": "0:00:47",
+        "status": "R"
+      },
+      {
+        "pid": 15932,
+        "name": "SearchFilterHost.exe",
+        "cmdline": "SearchFilterHost.exe",
+        "cpu_percent": 1.0,
+        "memory_percent": 0.1,
+        "rss": 13160448,
+        "time_plus": "0:00:21",
+        "status": "R"
+      },
+      {
+        "pid": 15364,
+        "name": "Antigravity.exe",
+        "cmdline": "C:\\Users\\user\\AppData\\Local\\Programs\\antigravity\\Antigravity.exe C:\\Users\\user\\AppData\\Local\\Programs\\antigravity\\resources\\app.asar.unpacked\\node_modules\\chrome-devtools-mcp\\build\\src\\bin\\chrome-devtools-mcp.js --no-usage-statistics --no-performance-crux --autoConnect",
+        "cpu_percent": 0.8,
+        "memory_percent": 1.1,
+        "rss": 196059136,
+        "time_plus": "0:00:28",
+        "status": "R"
+      },
+      {
+        "pid": 5964,
+        "name": "wslrelay.exe",
+        "cmdline": " --mode 1 --vm-id {3b88401e-b34f-4191-abdc-c9bce1270a81} --handle 1904",
+        "cpu_percent": 0.8,
+        "memory_percent": 0.1,
+        "rss": 19779584,
+        "time_plus": "0:00:14",
+        "status": "R"
+      },
+      {
+        "pid": 18296,
+        "name": "wsl.exe",
+        "cmdline": "C:\\Program Files\\WSL\\wsl.exe -d docker-desktop -e /usr/bin/vpnkit-bridge --pid-file=/run/vpnkit-bridge.pid guest",
+        "cpu_percent": 0.8,
+        "memory_percent": 0.1,
+        "rss": 12517376,
+        "time_plus": "0:01:32",
+        "status": "R"
+      }
+    ]
+  },
+  "gatus": [
+    {
+      "name": "mjsimone.com",
+      "group": "External",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 178.8,
+          "timestamp": "2026-11-28T03:52:43.858668027Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 179.9,
+          "timestamp": "2026-11-28T03:53:43.856751727Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 198.9,
+          "timestamp": "2026-11-28T03:54:43.871914208Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 262.5,
+          "timestamp": "2026-11-28T03:55:43.930945275Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 246.5,
+          "timestamp": "2026-11-28T03:56:43.910887129Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 206.9,
+          "timestamp": "2026-11-28T03:57:43.868871104Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 219.7,
+          "timestamp": "2026-11-28T03:58:43.877689755Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 190.7,
+          "timestamp": "2026-11-28T03:59:43.845069676Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 188.0,
+          "timestamp": "2026-11-28T04:00:43.838636063Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 220.5,
+          "timestamp": "2026-11-28T04:01:43.866930085Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 195.1,
+          "timestamp": "2026-11-28T04:02:43.838390012Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 236.7,
+          "timestamp": "2026-11-28T04:03:43.876329831Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 206.2,
+          "timestamp": "2026-11-28T04:04:43.841550939Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 226.9,
+          "timestamp": "2026-11-28T04:05:43.859163462Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 243.0,
+          "timestamp": "2026-11-28T04:06:43.870837372Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 248.8,
+          "timestamp": "2026-11-28T04:07:43.873644469Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 230.1,
+          "timestamp": "2026-11-28T04:08:43.851710174Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 205.4,
+          "timestamp": "2026-11-28T04:09:43.822379266Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 205.7,
+          "timestamp": "2026-11-28T04:10:43.819051359Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 235.6,
+          "timestamp": "2026-11-28T04:11:43.845393247Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 201.2,
+          "timestamp": "2026-11-28T04:12:43.807663505Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 192.5,
+          "timestamp": "2026-11-28T04:13:43.796079051Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 209.1,
+          "timestamp": "2026-11-28T04:14:43.808701611Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 204.1,
+          "timestamp": "2026-11-28T04:15:43.799691423Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 200.4,
+          "timestamp": "2026-11-28T04:16:43.793185712Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 330.1,
+          "timestamp": "2026-11-28T04:17:43.918391241Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 216.5,
+          "timestamp": "2026-11-28T04:18:43.801393551Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 196.6,
+          "timestamp": "2026-11-28T04:19:43.777727011Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 198.2,
+          "timestamp": "2026-11-28T04:20:43.775756154Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 209.9,
+          "timestamp": "2026-11-28T04:21:43.783658921Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 198.3,
+          "timestamp": "2026-11-28T04:22:43.768907775Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 206.0,
+          "timestamp": "2026-11-28T04:23:43.773107158Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 191.0,
+          "timestamp": "2026-11-28T04:24:43.754594195Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 199.9,
+          "timestamp": "2026-11-28T04:25:43.760151074Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 204.0,
+          "timestamp": "2026-11-28T04:26:43.75956735Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 211.3,
+          "timestamp": "2026-11-28T04:27:43.763071463Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 311.2,
+          "timestamp": "2026-11-28T04:28:43.860501168Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 218.7,
+          "timestamp": "2026-11-28T04:29:43.76310129Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 208.6,
+          "timestamp": "2026-11-28T04:30:43.749515229Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 210.8,
+          "timestamp": "2026-11-28T04:31:43.748083895Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 203.7,
+          "timestamp": "2026-11-28T04:32:43.738203865Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 217.4,
+          "timestamp": "2026-11-28T04:33:43.748153092Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 212.2,
+          "timestamp": "2026-11-28T04:34:43.739325016Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 194.7,
+          "timestamp": "2026-11-28T04:35:43.718561328Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 221.8,
+          "timestamp": "2026-11-28T04:36:43.741249893Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 227.2,
+          "timestamp": "2026-11-28T04:37:43.743267721Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 200.0,
+          "timestamp": "2026-11-28T04:38:43.713498755Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 256.3,
+          "timestamp": "2026-11-28T04:39:43.764814215Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 185.6,
+          "timestamp": "2026-11-28T04:40:43.691221824Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 199.3,
+          "timestamp": "2026-11-28T04:41:43.701100098Z"
+        }
+      ]
+    },
+    {
+      "name": "Dockhand",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.9,
+          "timestamp": "2026-11-28T03:52:45.48038652Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.7,
+          "timestamp": "2026-11-28T03:53:45.468840956Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 20.1,
+          "timestamp": "2026-11-28T03:54:45.473983649Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 18.5,
+          "timestamp": "2026-11-28T03:55:45.46957537Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 22.6,
+          "timestamp": "2026-11-28T03:56:45.470193155Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.5,
+          "timestamp": "2026-11-28T03:57:45.454754613Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.8,
+          "timestamp": "2026-11-28T03:58:45.449127318Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.7,
+          "timestamp": "2026-11-28T03:59:45.450727002Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 12.6,
+          "timestamp": "2026-11-28T04:00:45.44501661Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 12.7,
+          "timestamp": "2026-11-28T04:01:45.441582007Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.2,
+          "timestamp": "2026-11-28T04:02:45.43340845Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.3,
+          "timestamp": "2026-11-28T04:03:45.431118308Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.4,
+          "timestamp": "2026-11-28T04:04:45.433696745Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 21.5,
+          "timestamp": "2026-11-28T04:05:45.436261342Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.7,
+          "timestamp": "2026-11-28T04:06:45.421669544Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.8,
+          "timestamp": "2026-11-28T04:07:45.423978622Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 18.1,
+          "timestamp": "2026-11-28T04:08:45.421823623Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 12.4,
+          "timestamp": "2026-11-28T04:09:45.412727449Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.7,
+          "timestamp": "2026-11-28T04:10:45.408001728Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.9,
+          "timestamp": "2026-11-28T04:11:45.40816374Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.3,
+          "timestamp": "2026-11-28T04:12:45.398233724Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.8,
+          "timestamp": "2026-11-28T04:13:45.396179774Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.3,
+          "timestamp": "2026-11-28T04:14:45.392121205Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.8,
+          "timestamp": "2026-11-28T04:15:45.389394874Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.4,
+          "timestamp": "2026-11-28T04:16:45.38566363Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.4,
+          "timestamp": "2026-11-28T04:17:45.384230947Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.6,
+          "timestamp": "2026-11-28T04:18:45.383327443Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.8,
+          "timestamp": "2026-11-28T04:19:45.374565801Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.0,
+          "timestamp": "2026-11-28T04:20:45.370199672Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.7,
+          "timestamp": "2026-11-28T04:21:45.367179153Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.1,
+          "timestamp": "2026-11-28T04:22:45.363152383Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.7,
+          "timestamp": "2026-11-28T04:23:45.366847327Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.0,
+          "timestamp": "2026-11-28T04:24:45.359713365Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T04:25:45.352089314Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.2,
+          "timestamp": "2026-11-28T04:26:45.348557123Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.1,
+          "timestamp": "2026-11-28T04:27:45.350220954Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.8,
+          "timestamp": "2026-11-28T04:28:45.346692486Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T04:29:45.337696042Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T04:30:45.33493293Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.8,
+          "timestamp": "2026-11-28T04:31:45.331573093Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.7,
+          "timestamp": "2026-11-28T04:32:45.327438064Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.4,
+          "timestamp": "2026-11-28T04:33:45.327993496Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.8,
+          "timestamp": "2026-11-28T04:34:45.319950262Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.3,
+          "timestamp": "2026-11-28T04:35:45.316410772Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.1,
+          "timestamp": "2026-11-28T04:36:45.316024914Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.0,
+          "timestamp": "2026-11-28T04:37:45.311491353Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.7,
+          "timestamp": "2026-11-28T04:38:45.30600287Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.2,
+          "timestamp": "2026-11-28T04:39:45.308423925Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T04:40:45.29841254Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T04:41:45.295839329Z"
+        }
+      ]
+    },
+    {
+      "name": "Homepage",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.5,
+          "timestamp": "2026-11-28T03:52:43.708071875Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 20.4,
+          "timestamp": "2026-11-28T03:53:43.705622607Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.5,
+          "timestamp": "2026-11-28T03:54:43.696174196Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.9,
+          "timestamp": "2026-11-28T03:55:43.693609636Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 25.1,
+          "timestamp": "2026-11-28T03:56:43.698517634Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 25.3,
+          "timestamp": "2026-11-28T03:57:43.696498558Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 29.9,
+          "timestamp": "2026-11-28T03:58:43.696788397Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.6,
+          "timestamp": "2026-11-28T03:59:43.676573471Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.6,
+          "timestamp": "2026-11-28T04:00:43.676200476Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 24.6,
+          "timestamp": "2026-11-28T04:01:43.680195279Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.9,
+          "timestamp": "2026-11-28T04:02:43.666993385Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 30.8,
+          "timestamp": "2026-11-28T04:03:43.679298567Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 20.6,
+          "timestamp": "2026-11-28T04:04:43.66440346Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 22.6,
+          "timestamp": "2026-11-28T04:05:43.664051123Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.5,
+          "timestamp": "2026-11-28T04:06:43.652453177Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 28.5,
+          "timestamp": "2026-11-28T04:07:43.662444793Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 28.2,
+          "timestamp": "2026-11-28T04:08:43.658881318Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 23.1,
+          "timestamp": "2026-11-28T04:09:43.649319983Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 22.9,
+          "timestamp": "2026-11-28T04:10:43.645311538Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 26.6,
+          "timestamp": "2026-11-28T04:11:43.646257909Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.3,
+          "timestamp": "2026-11-28T04:12:43.631551182Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.9,
+          "timestamp": "2026-11-28T04:13:43.627281865Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.9,
+          "timestamp": "2026-11-28T04:14:43.626418222Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 22.6,
+          "timestamp": "2026-11-28T04:15:43.627472374Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.4,
+          "timestamp": "2026-11-28T04:16:43.621221175Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 22.7,
+          "timestamp": "2026-11-28T04:17:43.620401349Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.9,
+          "timestamp": "2026-11-28T04:18:43.611234882Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.1,
+          "timestamp": "2026-11-28T04:19:43.606079493Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.7,
+          "timestamp": "2026-11-28T04:20:43.602711213Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 23.8,
+          "timestamp": "2026-11-28T04:21:43.606505582Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.4,
+          "timestamp": "2026-11-28T04:22:43.592706596Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.2,
+          "timestamp": "2026-11-28T04:23:43.595329804Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.8,
+          "timestamp": "2026-11-28T04:24:43.589295403Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 22.3,
+          "timestamp": "2026-11-28T04:25:43.591436751Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.0,
+          "timestamp": "2026-11-28T04:26:43.581428065Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.2,
+          "timestamp": "2026-11-28T04:27:43.57645597Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.1,
+          "timestamp": "2026-11-28T04:28:43.576321121Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.4,
+          "timestamp": "2026-11-28T04:29:43.570626606Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 20.9,
+          "timestamp": "2026-11-28T04:30:43.571201776Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 21.3,
+          "timestamp": "2026-11-28T04:31:43.567462676Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 15.4,
+          "timestamp": "2026-11-28T04:32:43.558644176Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.6,
+          "timestamp": "2026-11-28T04:33:43.559613715Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 21.3,
+          "timestamp": "2026-11-28T04:34:43.557416967Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 23.6,
+          "timestamp": "2026-11-28T04:35:43.556275236Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 21.9,
+          "timestamp": "2026-11-28T04:36:43.550564076Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 23.0,
+          "timestamp": "2026-11-28T04:37:43.547953365Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 17.2,
+          "timestamp": "2026-11-28T04:38:43.53897154Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.6,
+          "timestamp": "2026-11-28T04:39:43.537943364Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 24.7,
+          "timestamp": "2026-11-28T04:40:43.539256828Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 19.8,
+          "timestamp": "2026-11-28T04:41:43.530614008Z"
+        }
+      ]
+    },
+    {
+      "name": "Jellyfin",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T03:52:43.911085863Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T03:53:43.908823341Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.0,
+          "timestamp": "2026-11-28T03:54:43.905744514Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.3,
+          "timestamp": "2026-11-28T03:55:43.898919535Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.3,
+          "timestamp": "2026-11-28T03:56:43.901347114Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T03:57:43.892950359Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T03:58:43.888732741Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.1,
+          "timestamp": "2026-11-28T03:59:43.886653024Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:00:43.88038456Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T04:01:43.878312222Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:02:43.873712658Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T04:03:43.876407375Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:04:43.865274692Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:05:43.863121799Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.8,
+          "timestamp": "2026-11-28T04:06:43.861858798Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.1,
+          "timestamp": "2026-11-28T04:07:43.858154348Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:08:43.852380308Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:09:43.848491246Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T04:10:43.84449537Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:11:43.8402651Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:12:43.836433023Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.3,
+          "timestamp": "2026-11-28T04:13:43.836964586Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:14:43.829964104Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:15:43.826958166Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.0,
+          "timestamp": "2026-11-28T04:16:43.826093941Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.3,
+          "timestamp": "2026-11-28T04:17:43.823460943Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:18:43.815751394Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:19:43.811652742Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.2,
+          "timestamp": "2026-11-28T04:20:43.808648885Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:21:43.80436522Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:22:43.800939295Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.3,
+          "timestamp": "2026-11-28T04:23:43.796919182Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:24:43.795459968Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:25:43.789977899Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:26:43.788417318Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.5,
+          "timestamp": "2026-11-28T04:27:43.786189674Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.5,
+          "timestamp": "2026-11-28T04:28:43.785053039Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.1,
+          "timestamp": "2026-11-28T04:29:43.775515068Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:30:43.772822901Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:31:43.768337017Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:32:43.764436962Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T04:33:43.762046007Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:34:43.757512016Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:35:43.754156276Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:36:43.75027848Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:37:43.746521761Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T04:38:43.745229525Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.5,
+          "timestamp": "2026-11-28T04:39:43.742976548Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.1,
+          "timestamp": "2026-11-28T04:40:43.738225985Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:41:43.732389899Z"
+        }
+      ]
+    },
+    {
+      "name": "Pi-hole",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.3,
+          "timestamp": "2026-11-28T03:52:44.227061138Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.6,
+          "timestamp": "2026-11-28T03:53:44.224387932Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 56.3,
+          "timestamp": "2026-11-28T03:54:44.221769171Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.5,
+          "timestamp": "2026-11-28T03:55:44.216358346Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 56.5,
+          "timestamp": "2026-11-28T03:56:44.214044138Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 58.1,
+          "timestamp": "2026-11-28T03:57:44.213532458Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.2,
+          "timestamp": "2026-11-28T03:58:44.204601596Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 57.7,
+          "timestamp": "2026-11-28T03:59:44.204081025Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 53.0,
+          "timestamp": "2026-11-28T04:00:44.19547236Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 52.3,
+          "timestamp": "2026-11-28T04:01:44.191666724Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 53.3,
+          "timestamp": "2026-11-28T04:02:44.189227785Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 50.2,
+          "timestamp": "2026-11-28T04:03:44.182137242Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 67.5,
+          "timestamp": "2026-11-28T04:04:44.195543091Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 56.3,
+          "timestamp": "2026-11-28T04:05:44.181401412Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 64.4,
+          "timestamp": "2026-11-28T04:06:44.185124114Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.6,
+          "timestamp": "2026-11-28T04:07:44.172386877Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 59.2,
+          "timestamp": "2026-11-28T04:08:44.173716433Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 50.4,
+          "timestamp": "2026-11-28T04:09:44.160531924Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 60.2,
+          "timestamp": "2026-11-28T04:10:44.166637453Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 58.7,
+          "timestamp": "2026-11-28T04:11:44.162113869Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 50.7,
+          "timestamp": "2026-11-28T04:12:44.149659261Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.3,
+          "timestamp": "2026-11-28T04:13:44.151603705Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.7,
+          "timestamp": "2026-11-28T04:14:44.14693955Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.7,
+          "timestamp": "2026-11-28T04:15:44.14366397Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 53.1,
+          "timestamp": "2026-11-28T04:16:44.138269698Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 58.7,
+          "timestamp": "2026-11-28T04:17:44.140437724Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 50.9,
+          "timestamp": "2026-11-28T04:18:44.128618911Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 53.7,
+          "timestamp": "2026-11-28T04:19:44.128452494Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.5,
+          "timestamp": "2026-11-28T04:20:44.125127066Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.2,
+          "timestamp": "2026-11-28T04:21:44.121746432Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.8,
+          "timestamp": "2026-11-28T04:22:44.117955687Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.9,
+          "timestamp": "2026-11-28T04:23:44.114835543Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 58.2,
+          "timestamp": "2026-11-28T04:24:44.11440951Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 59.9,
+          "timestamp": "2026-11-28T04:25:44.112741635Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.4,
+          "timestamp": "2026-11-28T04:26:44.104407347Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.5,
+          "timestamp": "2026-11-28T04:27:44.100668169Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.5,
+          "timestamp": "2026-11-28T04:28:44.09689621Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.2,
+          "timestamp": "2026-11-28T04:29:44.092030285Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.5,
+          "timestamp": "2026-11-28T04:30:44.089380229Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 51.0,
+          "timestamp": "2026-11-28T04:31:44.080529132Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 53.9,
+          "timestamp": "2026-11-28T04:32:44.081426619Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.4,
+          "timestamp": "2026-11-28T04:33:44.078406179Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.1,
+          "timestamp": "2026-11-28T04:34:44.074752773Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 51.1,
+          "timestamp": "2026-11-28T04:35:44.067239398Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 52.7,
+          "timestamp": "2026-11-28T04:36:44.065039712Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 54.6,
+          "timestamp": "2026-11-28T04:37:44.063525602Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 53.8,
+          "timestamp": "2026-11-28T04:38:44.059969588Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 55.2,
+          "timestamp": "2026-11-28T04:39:44.05703304Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 58.5,
+          "timestamp": "2026-11-28T04:40:44.057548227Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 50.8,
+          "timestamp": "2026-11-28T04:41:44.04505259Z"
+        }
+      ]
+    },
+    {
+      "name": "Pi-hole DNS",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T03:52:44.352855279Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 8.2,
+          "timestamp": "2026-11-28T03:53:44.351996847Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 8.4,
+          "timestamp": "2026-11-28T03:54:44.348735721Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T03:55:44.341063066Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.3,
+          "timestamp": "2026-11-28T03:56:44.335676364Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T03:57:44.335009361Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T03:58:44.330401071Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T03:59:44.325765152Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T04:00:44.321774166Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 3.7,
+          "timestamp": "2026-11-28T04:01:44.317913848Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:02:44.314571108Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:03:44.310395725Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 6.8,
+          "timestamp": "2026-11-28T04:04:44.309733838Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 7.6,
+          "timestamp": "2026-11-28T04:05:44.306486151Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.0,
+          "timestamp": "2026-11-28T04:06:44.299462951Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 9.4,
+          "timestamp": "2026-11-28T04:07:44.301279995Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:08:44.291912245Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:09:44.28908527Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:10:44.285360704Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.3,
+          "timestamp": "2026-11-28T04:11:44.281834717Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 3.7,
+          "timestamp": "2026-11-28T04:12:44.277687594Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T04:13:44.277113576Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.3,
+          "timestamp": "2026-11-28T04:14:44.270498422Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:15:44.2674066Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:16:44.263713255Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:17:44.259872148Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 7.4,
+          "timestamp": "2026-11-28T04:18:44.259507128Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:19:44.253301208Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 8.7,
+          "timestamp": "2026-11-28T04:20:44.254301675Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 8.2,
+          "timestamp": "2026-11-28T04:21:44.249121983Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:22:44.242045733Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 3.5,
+          "timestamp": "2026-11-28T04:23:44.237769155Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:24:44.235764243Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:25:44.231249172Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:26:44.227562575Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:27:44.225224898Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:28:44.222761122Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:29:44.216743032Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.3,
+          "timestamp": "2026-11-28T04:30:44.21329282Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:31:44.207881397Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:32:44.20630515Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:33:44.202188213Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 7.1,
+          "timestamp": "2026-11-28T04:34:44.201162803Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:35:44.195077358Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 3.8,
+          "timestamp": "2026-11-28T04:36:44.19130836Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T04:37:44.190030674Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 6.7,
+          "timestamp": "2026-11-28T04:38:44.187118163Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 8.1,
+          "timestamp": "2026-11-28T04:39:44.184797295Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:40:44.177479418Z"
+        },
+        {
+          "success": true,
+          "status": null,
+          "durationMs": 7.2,
+          "timestamp": "2026-11-28T04:41:44.175692986Z"
+        }
+      ]
+    },
+    {
+      "name": "Prowlarr",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.8,
+          "timestamp": "2026-11-28T03:52:45.023160241Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T03:53:45.017208082Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T03:54:45.012750133Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T03:55:45.009322126Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T03:56:45.006516529Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.1,
+          "timestamp": "2026-11-28T03:57:45.004089341Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T03:58:45.000202229Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.2,
+          "timestamp": "2026-11-28T03:59:44.998891788Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.5,
+          "timestamp": "2026-11-28T04:00:44.993161188Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:01:44.987423208Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.7,
+          "timestamp": "2026-11-28T04:02:44.982324248Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:03:44.979419635Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.3,
+          "timestamp": "2026-11-28T04:04:44.977132042Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:05:44.973839268Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:06:44.969117022Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.8,
+          "timestamp": "2026-11-28T04:07:44.969269134Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:08:44.961129158Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.4,
+          "timestamp": "2026-11-28T04:09:44.961546679Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:10:44.955844696Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:11:44.95111164Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:12:44.947790341Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.9,
+          "timestamp": "2026-11-28T04:13:44.947413657Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:14:44.941600389Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:15:44.939517648Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.5,
+          "timestamp": "2026-11-28T04:16:44.936466109Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.1,
+          "timestamp": "2026-11-28T04:17:44.93140059Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:18:44.927116836Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:19:44.923928606Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:20:44.92064045Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.4,
+          "timestamp": "2026-11-28T04:21:44.919988181Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.5,
+          "timestamp": "2026-11-28T04:22:44.916625869Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:23:44.909303656Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 24.0,
+          "timestamp": "2026-11-28T04:24:44.924638219Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:25:44.902765948Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.6,
+          "timestamp": "2026-11-28T04:26:44.902147905Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:27:44.895177382Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:28:44.890442084Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.1,
+          "timestamp": "2026-11-28T04:29:44.886925363Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.4,
+          "timestamp": "2026-11-28T04:30:44.886547383Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T04:31:44.880932071Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:32:44.876455337Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:33:44.873693263Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.6,
+          "timestamp": "2026-11-28T04:34:44.869803067Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.7,
+          "timestamp": "2026-11-28T04:35:44.864813918Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T04:36:44.863511885Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:37:44.860422543Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 25.5,
+          "timestamp": "2026-11-28T04:38:44.876503228Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:39:44.853083Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:40:44.84757158Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:41:44.844705431Z"
+        }
+      ]
+    },
+    {
+      "name": "qBittorrent",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.8,
+          "timestamp": "2026-11-28T03:52:45.242479816Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T03:53:45.237408271Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.9,
+          "timestamp": "2026-11-28T03:54:45.238253891Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.2,
+          "timestamp": "2026-11-28T03:55:45.230078474Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T03:56:45.225978318Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.9,
+          "timestamp": "2026-11-28T03:57:45.222552921Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T03:58:45.219842574Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T03:59:45.216047285Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.7,
+          "timestamp": "2026-11-28T04:00:45.211690667Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.7,
+          "timestamp": "2026-11-28T04:01:45.20780046Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.6,
+          "timestamp": "2026-11-28T04:02:45.20356262Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:03:45.201259623Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T04:04:45.198255076Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.9,
+          "timestamp": "2026-11-28T04:05:45.194848052Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T04:06:45.189172153Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 12.4,
+          "timestamp": "2026-11-28T04:07:45.193506997Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:08:45.186674197Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.4,
+          "timestamp": "2026-11-28T04:09:45.181519813Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:10:45.179611453Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.6,
+          "timestamp": "2026-11-28T04:11:45.177411112Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.3,
+          "timestamp": "2026-11-28T04:12:45.168386607Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:13:45.165563557Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.1,
+          "timestamp": "2026-11-28T04:14:45.161901833Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:15:45.158111514Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.1,
+          "timestamp": "2026-11-28T04:16:45.157540866Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:17:45.150047184Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T04:18:45.145909214Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:19:45.14294774Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:20:45.139560435Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T04:21:45.135849316Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.5,
+          "timestamp": "2026-11-28T04:22:45.133413694Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.3,
+          "timestamp": "2026-11-28T04:23:45.127485982Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T04:24:45.124877746Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:25:45.121536998Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T04:26:45.117716796Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:27:45.113741759Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.3,
+          "timestamp": "2026-11-28T04:28:45.112750942Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.3,
+          "timestamp": "2026-11-28T04:29:45.108667651Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.2,
+          "timestamp": "2026-11-28T04:30:45.103050017Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:31:45.099726668Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:32:45.095535829Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:33:45.092639736Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:34:45.088119002Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:35:45.084989471Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T04:36:45.081126979Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T04:37:45.078632862Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.7,
+          "timestamp": "2026-11-28T04:38:45.077411501Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:39:45.070570769Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:40:45.067719469Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.6,
+          "timestamp": "2026-11-28T04:41:45.068213947Z"
+        }
+      ]
+    },
+    {
+      "name": "Radarr",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T03:52:44.799906469Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.9,
+          "timestamp": "2026-11-28T03:53:44.799759228Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.1,
+          "timestamp": "2026-11-28T03:54:44.796544943Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.0,
+          "timestamp": "2026-11-28T03:55:44.789919762Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T03:56:44.783175857Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.6,
+          "timestamp": "2026-11-28T03:57:44.781135342Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T03:58:44.777446483Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.9,
+          "timestamp": "2026-11-28T03:59:44.774717958Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:00:44.770513513Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:01:44.766311447Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.0,
+          "timestamp": "2026-11-28T04:02:44.760975508Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:03:44.756943563Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:04:44.755395852Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.2,
+          "timestamp": "2026-11-28T04:05:44.754072588Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:06:44.74731766Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.1,
+          "timestamp": "2026-11-28T04:07:44.743822488Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.5,
+          "timestamp": "2026-11-28T04:08:44.73996295Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.3,
+          "timestamp": "2026-11-28T04:09:44.741547885Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:10:44.733064949Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:11:44.729688218Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:12:44.725317723Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.0,
+          "timestamp": "2026-11-28T04:13:44.724449144Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T04:14:44.718545694Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:15:44.71555732Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.6,
+          "timestamp": "2026-11-28T04:16:44.710918039Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:17:44.708617241Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.9,
+          "timestamp": "2026-11-28T04:18:44.708621874Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:19:44.701067685Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.9,
+          "timestamp": "2026-11-28T04:20:44.698295519Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.6,
+          "timestamp": "2026-11-28T04:21:44.694863896Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.3,
+          "timestamp": "2026-11-28T04:22:44.693410458Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:23:44.686626845Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:24:44.684086851Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.0,
+          "timestamp": "2026-11-28T04:25:44.678540684Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 8.3,
+          "timestamp": "2026-11-28T04:26:44.679696957Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.6,
+          "timestamp": "2026-11-28T04:27:44.67159895Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.7,
+          "timestamp": "2026-11-28T04:28:44.667697498Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.5,
+          "timestamp": "2026-11-28T04:29:44.665242144Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:30:44.661375179Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:31:44.655727978Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:32:44.653454615Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.1,
+          "timestamp": "2026-11-28T04:33:44.649956701Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:34:44.645601897Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:35:44.642592812Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.0,
+          "timestamp": "2026-11-28T04:36:44.639804763Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:37:44.635493581Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:38:44.631346129Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.2,
+          "timestamp": "2026-11-28T04:39:44.628303992Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.9,
+          "timestamp": "2026-11-28T04:40:44.624794381Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.2,
+          "timestamp": "2026-11-28T04:41:44.620433545Z"
+        }
+      ]
+    },
+    {
+      "name": "Scrutiny",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.7,
+          "timestamp": "2026-11-28T03:52:45.685758187Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.4,
+          "timestamp": "2026-11-28T03:53:45.681789191Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T03:54:45.678648503Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.8,
+          "timestamp": "2026-11-28T03:55:45.678559288Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.2,
+          "timestamp": "2026-11-28T03:56:45.671548333Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T03:57:45.670416976Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.4,
+          "timestamp": "2026-11-28T03:58:45.663330524Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T03:59:45.659269328Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:00:45.656145461Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.4,
+          "timestamp": "2026-11-28T04:01:45.654517613Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 2.8,
+          "timestamp": "2026-11-28T04:02:45.647895314Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.2,
+          "timestamp": "2026-11-28T04:03:45.644999627Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:04:45.643956321Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.5,
+          "timestamp": "2026-11-28T04:05:45.640492263Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.2,
+          "timestamp": "2026-11-28T04:06:45.633451361Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:07:45.630275247Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:08:45.627412651Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.0,
+          "timestamp": "2026-11-28T04:09:45.624328068Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 7.1,
+          "timestamp": "2026-11-28T04:10:45.623226807Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.3,
+          "timestamp": "2026-11-28T04:11:45.616036961Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.2,
+          "timestamp": "2026-11-28T04:12:45.611997288Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:13:45.609541592Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.4,
+          "timestamp": "2026-11-28T04:14:45.606121526Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.2,
+          "timestamp": "2026-11-28T04:15:45.604393738Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.8,
+          "timestamp": "2026-11-28T04:16:45.598218636Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:17:45.595857172Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.8,
+          "timestamp": "2026-11-28T04:18:45.590796075Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:19:45.586939368Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.8,
+          "timestamp": "2026-11-28T04:20:45.583628852Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.5,
+          "timestamp": "2026-11-28T04:21:45.579226511Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.4,
+          "timestamp": "2026-11-28T04:22:45.579701701Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.8,
+          "timestamp": "2026-11-28T04:23:45.573647368Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:24:45.568933211Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:25:45.567609247Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.8,
+          "timestamp": "2026-11-28T04:26:45.564138388Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:27:45.558454733Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.5,
+          "timestamp": "2026-11-28T04:28:45.554883501Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.9,
+          "timestamp": "2026-11-28T04:29:45.551370958Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 4.0,
+          "timestamp": "2026-11-28T04:30:45.547722619Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.5,
+          "timestamp": "2026-11-28T04:31:45.543620782Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:32:45.539718358Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:33:45.53628739Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.4,
+          "timestamp": "2026-11-28T04:34:45.533076906Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 6.3,
+          "timestamp": "2026-11-28T04:35:45.531741324Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:36:45.525133719Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.6,
+          "timestamp": "2026-11-28T04:37:45.521903237Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.3,
+          "timestamp": "2026-11-28T04:38:45.518114773Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 5.6,
+          "timestamp": "2026-11-28T04:39:45.51690417Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.5,
+          "timestamp": "2026-11-28T04:40:45.511872068Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 3.3,
+          "timestamp": "2026-11-28T04:41:45.508170651Z"
+        }
+      ]
+    },
+    {
+      "name": "Sonarr",
+      "group": "Local Services",
+      "results": [
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.6,
+          "timestamp": "2026-11-28T03:52:44.587744651Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.9,
+          "timestamp": "2026-11-28T03:53:44.587024517Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 36.4,
+          "timestamp": "2026-11-28T03:54:44.606042832Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 16.4,
+          "timestamp": "2026-11-28T03:55:44.581994203Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.4,
+          "timestamp": "2026-11-28T03:56:44.572242537Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.0,
+          "timestamp": "2026-11-28T03:57:44.569979364Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.1,
+          "timestamp": "2026-11-28T03:58:44.565404811Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.4,
+          "timestamp": "2026-11-28T03:59:44.564032959Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.4,
+          "timestamp": "2026-11-28T04:00:44.556879655Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.5,
+          "timestamp": "2026-11-28T04:01:44.557425157Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.8,
+          "timestamp": "2026-11-28T04:02:44.551187338Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.5,
+          "timestamp": "2026-11-28T04:03:44.545679257Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.0,
+          "timestamp": "2026-11-28T04:04:44.541650284Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.3,
+          "timestamp": "2026-11-28T04:05:44.539648636Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.7,
+          "timestamp": "2026-11-28T04:06:44.535397477Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.1,
+          "timestamp": "2026-11-28T04:07:44.531162445Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 12.2,
+          "timestamp": "2026-11-28T04:08:44.53086213Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.5,
+          "timestamp": "2026-11-28T04:09:44.524632921Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.1,
+          "timestamp": "2026-11-28T04:10:44.524552292Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.5,
+          "timestamp": "2026-11-28T04:11:44.522232169Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:12:44.513359377Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.8,
+          "timestamp": "2026-11-28T04:13:44.511782019Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.4,
+          "timestamp": "2026-11-28T04:14:44.509704381Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:15:44.502118644Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.1,
+          "timestamp": "2026-11-28T04:16:44.498798849Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.4,
+          "timestamp": "2026-11-28T04:17:44.496262584Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.5,
+          "timestamp": "2026-11-28T04:18:44.494885778Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.4,
+          "timestamp": "2026-11-28T04:19:44.491486307Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.3,
+          "timestamp": "2026-11-28T04:20:44.485524474Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.3,
+          "timestamp": "2026-11-28T04:21:44.48444406Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.3,
+          "timestamp": "2026-11-28T04:22:44.47824889Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.7,
+          "timestamp": "2026-11-28T04:23:44.4741859Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.6,
+          "timestamp": "2026-11-28T04:24:44.471247557Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:25:44.466986854Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:26:44.463419155Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.3,
+          "timestamp": "2026-11-28T04:27:44.45938423Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.6,
+          "timestamp": "2026-11-28T04:28:44.460496159Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.5,
+          "timestamp": "2026-11-28T04:29:44.456010779Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.6,
+          "timestamp": "2026-11-28T04:30:44.448795764Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 11.9,
+          "timestamp": "2026-11-28T04:31:44.446117154Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.0,
+          "timestamp": "2026-11-28T04:32:44.441630416Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.7,
+          "timestamp": "2026-11-28T04:33:44.441141706Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.2,
+          "timestamp": "2026-11-28T04:34:44.434612468Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:35:44.430061496Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.5,
+          "timestamp": "2026-11-28T04:36:44.427060801Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 14.6,
+          "timestamp": "2026-11-28T04:37:44.427926015Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.4,
+          "timestamp": "2026-11-28T04:38:44.420136455Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 13.5,
+          "timestamp": "2026-11-28T04:39:44.419950586Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 10.5,
+          "timestamp": "2026-11-28T04:40:44.412907511Z"
+        },
+        {
+          "success": true,
+          "status": 200,
+          "durationMs": 9.9,
+          "timestamp": "2026-11-28T04:41:44.408414026Z"
+        }
+      ]
+    }
+  ],
+  "scrutiny": [
+    {
+      "device_name": "/dev/sda",
+      "device_type": "ata",
+      "device_protocol": "ATA",
+      "model_name": "ST1000DX001-1CM162",
+      "capacity": 1000204886016,
+      "device_status": 0,
+      "temp": 30,
+      "power_on_hours": 27597,
+      "collector_date": "2026-11-28T00:31:29Z"
+    },
+    {
+      "device_name": "/dev/sdb",
+      "device_type": "ata",
+      "device_protocol": "ATA",
+      "model_name": "SK hynix SC311 SATA 256GB",
+      "capacity": 256060514304,
+      "device_status": 0,
+      "temp": 21,
+      "power_on_hours": 34633,
+      "collector_date": "2026-11-28T00:31:30Z"
+    },
+    {
+      "device_name": "/dev/sdc",
+      "device_type": "ata",
+      "device_protocol": "ATA",
+      "model_name": "WDC WD10EZEX-08M2NA0",
+      "capacity": 1000204886016,
+      "device_status": 0,
+      "temp": 29,
+      "power_on_hours": 31556,
+      "collector_date": "2026-11-28T00:31:30Z"
+    },
+    {
+      "device_name": "/dev/sdd",
+      "device_type": "nvme",
+      "device_protocol": "NVMe",
+      "model_name": "KXG50ZNV512G NVMe TOSHIBA 512GB",
+      "capacity": 512110190592,
+      "device_status": 0,
+      "temp": 40,
+      "power_on_hours": 34923,
+      "collector_date": "2026-11-28T00:31:29Z"
+    }
+  ],
+  "dockhand": {
+    "running": 12,
+    "total": 12,
+    "cpuPercent": 104.6,
+    "memPercent": 18.9,
+    "containers": [
+      {
+        "name": "caddy",
+        "image": "caddy:2",
+        "status": "Up 5 hours",
+        "state": "running",
+        "cpuPercent": 0.0,
+        "memUsage": "18.48MiB / 7.7GiB",
+        "memPercent": 0.23
+      },
+      {
+        "name": "dockhand",
+        "image": "fnsys/dockhand:latest",
+        "status": "Up 5 hours (healthy)",
+        "state": "running",
+        "cpuPercent": 0.86,
+        "memUsage": "129.7MiB / 7.7GiB",
+        "memPercent": 1.65
+      },
+      {
+        "name": "gatus",
+        "image": "twinproduction/gatus:stable",
+        "status": "Up 3 hours",
+        "state": "running",
+        "cpuPercent": 0.03,
+        "memUsage": "16.21MiB / 7.7GiB",
+        "memPercent": 0.21
+      },
+      {
+        "name": "homepage",
+        "image": "ghcr.io/gethomepage/homepage:latest",
+        "status": "Up 4 hours (healthy)",
+        "state": "running",
+        "cpuPercent": 1.15,
+        "memUsage": "141.8MiB / 7.7GiB",
+        "memPercent": 1.8
+      },
+      {
+        "name": "jellyfin",
+        "image": "jellyfin/jellyfin:latest",
+        "status": "Up 5 hours (healthy)",
+        "state": "running",
+        "cpuPercent": 101.58,
+        "memUsage": "424.9MiB / 7.7GiB",
+        "memPercent": 5.39
+      },
+      {
+        "name": "pihole",
+        "image": "pihole/pihole:latest",
+        "status": "Up 5 hours (healthy)",
+        "state": "running",
+        "cpuPercent": 0.35,
+        "memUsage": "195.9MiB / 7.7GiB",
+        "memPercent": 2.48
+      },
+      {
+        "name": "prowlarr",
+        "image": "lscr.io/linuxserver/prowlarr:latest",
+        "status": "Up 5 hours",
+        "state": "running",
+        "cpuPercent": 0.07,
+        "memUsage": "135MiB / 7.7GiB",
+        "memPercent": 1.71
+      },
+      {
+        "name": "radarr",
+        "image": "lscr.io/linuxserver/radarr:latest",
+        "status": "Up 5 hours",
+        "state": "running",
+        "cpuPercent": 0.08,
+        "memUsage": "163.2MiB / 7.7GiB",
+        "memPercent": 2.07
+      },
+      {
+        "name": "scrutiny",
+        "image": "ghcr.io/analogj/scrutiny:v0.10.0-web",
+        "status": "Up 4 hours",
+        "state": "running",
+        "cpuPercent": 0.0,
+        "memUsage": "12.56MiB / 7.7GiB",
+        "memPercent": 0.16
+      },
+      {
+        "name": "scrutiny-influxdb",
+        "image": "influxdb:2.7",
+        "status": "Up 4 hours (healthy)",
+        "state": "running",
+        "cpuPercent": 0.07,
+        "memUsage": "84.07MiB / 7.7GiB",
+        "memPercent": 1.07
+      },
+      {
+        "name": "sonarr",
+        "image": "lscr.io/linuxserver/sonarr:latest",
+        "status": "Up 5 hours",
+        "state": "running",
+        "cpuPercent": 0.16,
+        "memUsage": "159MiB / 7.7GiB",
+        "memPercent": 2.02
+      },
+      {
+        "name": "unpackerr",
+        "image": "golift/unpackerr:latest",
+        "status": "Up 4 hours",
+        "state": "running",
+        "cpuPercent": 0.28,
+        "memUsage": "6.359MiB / 7.7GiB",
+        "memPercent": 0.08
+      }
+    ]
+  }
+}

@@ -179,13 +179,174 @@ footer {
 /* Focus */
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
+/* Featured Homelab Card */
+.homelab-feature {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.homelab-feature-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.homelab-prompt {
+  display: inline-block;
+  margin-left: 0.45rem;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-2);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(74, 144, 226, 0.12);
+  border: 1px solid rgba(124, 196, 255, 0.25);
+  vertical-align: middle;
+}
+
+.status-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ok);
+  background: rgba(63, 185, 80, 0.1);
+  border-color: rgba(63, 185, 80, 0.35);
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px rgba(63, 185, 80, 0.75);
+}
+
+.live-dot.is-preview {
+  background: var(--accent-2);
+  box-shadow: 0 0 8px rgba(124, 196, 255, 0.75);
+}
+
+.live-dot.is-stale {
+  background: var(--warn);
+}
+
+.live-dot.is-offline {
+  background: #f85149;
+}
+
+.homelab-pulse-panel {
+  background: radial-gradient(circle at 80% 15%, rgba(74, 144, 226, 0.14), transparent 55%), #070a12;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.pulse-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pulse-panel-cpu {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pulse-panel-age {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pulse-panel-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.pulse-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 0.22rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pulse-bar-label strong {
+  color: var(--text);
+}
+
+.pulse-bar-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.pulse-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.45s ease;
+}
+
+.pulse-bar-fill.cpu {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.pulse-bar-fill.mem {
+  background: linear-gradient(90deg, #7c5cff, #b89eff);
+}
+
+.pulse-panel-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.pulse-stat {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 7px;
+  padding: 0.5rem 0.65rem;
+}
+
+.pulse-stat strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.pulse-stat span {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
 /* Mobile */
+@media (max-width: 780px) {
+  .homelab-feature {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 560px) {
   .navbar { padding: 0.9rem 1rem; }
   .nav-links { gap: 1rem; font-size: 0.95rem; }
   .hero { padding: 5.5rem 1rem 5rem; }
   .eyebrow { font-size: 0.68rem; letter-spacing: 0.08em; }
   .section { margin: 4.5rem auto; padding: 0 1rem; }
+  .homelab-prompt { margin-left: 0; margin-top: 0.35rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

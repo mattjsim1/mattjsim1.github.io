@@ -1,0 +1,161 @@
+<!doctype html><html lang="en" class="dark"><head><meta charset="utf-8"/><script>
+(function () {
+  var path = window.location.pathname;
+  var idx = path.indexOf('/gatus');
+  var base = idx !== -1 ? path.slice(0, idx + '/gatus'.length) + '/' : '/homelab/gatus/';
+  window.__GATUS_BASE__ = base;
+
+  var baseEl = document.createElement('base');
+  baseEl.href = base;
+  document.head.insertBefore(baseEl, document.head.firstChild);
+
+  var liveUrl = 'https://homelab-telemetry.mattman0396.workers.dev/api/gatus';
+  var snapUrl = window.location.origin + base + '../data/gatus.json';
+  var snapPromise = null;
+  function fetchLiveWithTimeout(url, ms) {
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = controller ? setTimeout(function () { controller.abort(); }, ms) : null;
+    var opts = controller ? { signal: controller.signal } : {};
+    return origFetch(url, opts).finally(function () {
+      if (timer !== null) clearTimeout(timer);
+    });
+  }
+  function loadSnap() {
+    if (!snapPromise) {
+      snapPromise = fetchLiveWithTimeout(liveUrl, 3500)
+        .then(function (r) {
+          if (!r.ok) throw new Error('Live HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          if (!data || typeof data !== 'object' || !Array.isArray(data.endpoints)) {
+            throw new Error('Invalid live payload');
+          }
+          return data;
+        })
+        .catch(function () {
+          return origFetch(snapUrl).then(function (r) {
+            if (!r.ok) throw new Error('Snapshot HTTP ' + r.status);
+            return r.json();
+          });
+        });
+    }
+    return snapPromise;
+  }
+
+  function resolveApi(urlStr) {
+    var u;
+    try {
+      u = new URL(urlStr, window.location.origin);
+    } catch (e) {
+      return null;
+    }
+    if (u.pathname.indexOf('/api/v1/') === -1) return null;
+    return u;
+  }
+
+  function buildResponseData(snap, u) {
+    var p = u.pathname;
+    if (p === '/api/v1/config') return { status: 200, type: 'json', body: snap.config || {} };
+    if (p === '/api/v1/endpoints/statuses') return { status: 200, type: 'json', body: snap.endpoints || [] };
+    if (p === '/api/v1/suites/statuses') return { status: 200, type: 'json', body: snap.suites || [] };
+
+    var mStatuses = p.match(/^\/api\/v1\/endpoints\/([^/]+)\/statuses$/);
+    if (mStatuses) {
+      var key = decodeURIComponent(mStatuses[1]);
+      var data = (snap.endpointStatuses && snap.endpointStatuses[key]) || null;
+      if (!data && Array.isArray(snap.endpoints)) {
+        data = snap.endpoints.find(function (e) { return e.key === key; }) || null;
+      }
+      return data
+        ? { status: 200, type: 'json', body: data }
+        : { status: 404, type: 'json', body: { error: 'Not found' } };
+    }
+
+    var mHistory = p.match(/^\/api\/v1\/endpoints\/([^/]+)\/response-times\/([^/]+)\/history$/);
+    if (mHistory) {
+      var hKey = decodeURIComponent(mHistory[1]);
+      var dur = decodeURIComponent(mHistory[2]);
+      var byKey = (snap.responseHistory && snap.responseHistory[hKey]) || {};
+      var hData = byKey[dur] || byKey['24h'] || byKey['7d'] || { timestamps: [], responseTimes: [] };
+      return { status: 200, type: 'json', body: hData };
+    }
+
+    if (p.endsWith('/badge.svg')) {
+      return {
+        status: 200,
+        type: 'svg',
+        body: '<svg xmlns="http://www.w3.org/2000/svg" width="90" height="20"><rect width="90" height="20" rx="3" fill="#2ea043"/><text x="45" y="14" fill="#fff" font-family="sans-serif" font-size="11" text-anchor="middle">passing</text></svg>'
+      };
+    }
+
+    return { status: 200, type: 'json', body: {} };
+  }
+
+  var origFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    var urlStr = typeof input === 'string' ? input : (input && input.url) || '';
+    var u = resolveApi(urlStr);
+    if (!u) return origFetch(input, init);
+    return loadSnap().then(function (snap) {
+      var res = buildResponseData(snap, u);
+      var ct = res.type === 'svg' ? 'image/svg+xml' : 'application/json';
+      var text = res.type === 'svg' ? res.body : JSON.stringify(res.body);
+      return new Response(text, { status: res.status, headers: { 'Content-Type': ct } });
+    });
+  };
+
+  var OrigXHR = window.XMLHttpRequest;
+  function PatchedXHR() {
+    var xhr = new OrigXHR();
+    var interceptedUrl = null;
+    var origOpen = xhr.open.bind(xhr);
+    var origSend = xhr.send.bind(xhr);
+    xhr.open = function (method, url, async, user, password) {
+      var u = resolveApi(url);
+      if (u && (!method || method.toUpperCase() === 'GET')) {
+        interceptedUrl = u;
+        return;
+      }
+      interceptedUrl = null;
+      return origOpen(method, url, async !== false, user, password);
+    };
+    xhr.send = function (body) {
+      if (!interceptedUrl) return origSend(body);
+      var targetUrl = interceptedUrl;
+      loadSnap().then(function (snap) {
+        var res = buildResponseData(snap, targetUrl);
+        var text = res.type === 'svg' ? res.body : JSON.stringify(res.body);
+        var val = xhr.responseType === 'json' && res.type === 'json' ? res.body : text;
+        Object.defineProperty(xhr, 'readyState', { configurable: true, value: 4 });
+        Object.defineProperty(xhr, 'status', { configurable: true, value: res.status });
+        Object.defineProperty(xhr, 'statusText', { configurable: true, value: res.status === 200 ? 'OK' : 'Not Found' });
+        Object.defineProperty(xhr, 'responseText', { configurable: true, value: text });
+        Object.defineProperty(xhr, 'response', { configurable: true, value: val });
+        if (typeof xhr.onreadystatechange === 'function') xhr.onreadystatechange(new Event('readystatechange'));
+        xhr.dispatchEvent(new Event('readystatechange'));
+        if (typeof xhr.onload === 'function') xhr.onload(new ProgressEvent('load'));
+        xhr.dispatchEvent(new ProgressEvent('load'));
+        xhr.dispatchEvent(new ProgressEvent('loadend'));
+      });
+    };
+    return xhr;
+  }
+  PatchedXHR.UNSENT = 0;
+  PatchedXHR.OPENED = 1;
+  PatchedXHR.HEADERS_RECEIVED = 2;
+  PatchedXHR.LOADING = 3;
+  PatchedXHR.DONE = 4;
+  window.XMLHttpRequest = PatchedXHR;
+})();
+</script><script>window.config = {logo: "", header: "basement-server Status", dashboardHeading: "Health Dashboard", dashboardSubheading: "Monitor the health of your endpoints in real-time", link: "", buttons: [], maximumNumberOfResults: "100", defaultSortBy: "name", defaultFilterBy: "none", loginSubtitle: "System Monitoring Dashboard"};
+      
+      (function() {
+        const themeFromCookie = document.cookie.match(/theme=(dark|light);?/)?.[1];
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (themeFromCookie === 'dark' || (!themeFromCookie && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();</script><title>basement-server Status</title><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"/><link rel="manifest" href="manifest.json"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="css/custom.css"/><meta name="description" content="Gatus is an advanced automated status page that lets you monitor your applications and configure alerts to notify you if there&#39;s an issue"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="apple-mobile-web-app-title" content="basement-server Status"/><meta name="application-name" content="basement-server Status"/><meta name="theme-color" content="#f7f9fb"/><script defer="defer" src="js/chunk-vendors.js"></script><script defer="defer" src="js/app.js"></script><link href="css/app.css" rel="stylesheet"></head><body><noscript><strong>Enable JavaScript to view this page.</strong></noscript><div id="app"></div></body></html>
